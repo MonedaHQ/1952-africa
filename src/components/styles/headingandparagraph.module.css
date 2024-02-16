@@ -1,0 +1,29 @@
+.heading {
+  font-size: 3.8rem;
+}
+
+.paragraph {
+  font-size: 2.2rem;
+  max-width: 96%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 62em) {
+  .paragraph {
+    max-width: 90%;
+  }
+
+  .heading {
+    font-size: 2.8rem;
+  }
+}
+
+@media only screen and (max-width: 24em) {
+  .paragraph {
+    font-size: 1.8rem;
+  }
+
+  .heading {
+    font-size: 2.2rem;
+  }
+}

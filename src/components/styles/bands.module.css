@@ -1,0 +1,42 @@
+.marquee {
+  position: relative;
+  display: grid;
+  grid-auto-rows: max-content;
+  row-gap: 0rem;
+  padding: 0.2rem 0;
+  overflow: hidden;
+}
+
+.bandsContainer {
+  width: 200%;
+  white-space: nowrap;
+}
+
+.scrollContainer {
+  display: inline-block;
+  white-space: nowrap;
+  animation: slide 200s linear infinite;
+}
+
+.scrollContainer.right {
+  animation-direction: reverse;
+}
+
+.scrollContainer img {
+  max-width: 120px;
+  height: auto;
+  display: inline-block;
+}
+
+.bands {
+  display: inline-block;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,57 @@
+.contentContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 3rem;
+}
+
+.artistBox {
+  padding: 2.8rem;
+  background: var(--color-light-grey);
+  border-radius: 1.8rem;
+  overflow: hidden;
+}
+
+.artists {
+  padding: 1.8rem;
+  border-radius: 0.8rem;
+  background-color: var(--color-white);
+
+  display: grid;
+  grid-auto-rows: max-content;
+  row-gap: 2.4rem;
+
+  overflow: hidden;
+}
+
+.artist {
+  display: grid;
+  align-items: center;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.4rem;
+  padding: 1rem 0;
+  padding: 0.8rem 1.8rem;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.artist:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.artist:hover {
+  background-color: var(--color-light-grey);
+}
+
+.artistImageContainer img {
+  border-radius: 8rem;
+}
+
+.artistDetails h5 {
+  font-size: 1.8rem;
+}
+
+.artistDetails p {
+  opacity: 0.6;
+}

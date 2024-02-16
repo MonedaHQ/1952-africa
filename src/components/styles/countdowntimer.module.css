@@ -1,0 +1,26 @@
+.main {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.timer {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.timer p {
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.timer span {
+  /* display: none; */
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  /* text-transform: uppercase; */
+  /* opacity: 0.5; */
+}

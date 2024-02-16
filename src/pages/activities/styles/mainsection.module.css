@@ -1,0 +1,64 @@
+.main {
+  height: 96vh;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 3rem;
+
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.activityDetails {
+  display: grid;
+  grid-auto-rows: max-content;
+  row-gap: 2rem;
+}
+
+.activityMetrics {
+  list-style: none;
+  opacity: 0.6;
+}
+
+.activityMetrics li {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.videoContainer {
+  width: 100%;
+  height: 100%;
+  padding: 8rem 0;
+
+  overflow: hidden;
+
+  display: grid;
+  align-items: center;
+}
+
+.videoContainer iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.8rem;
+
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 95em) {
+  .main {
+    column-gap: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 80em) {
+  .main {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding-top: 12rem;
+    height: auto;
+  }
+
+  .videoContainer {
+    height: 600px;
+  }
+}

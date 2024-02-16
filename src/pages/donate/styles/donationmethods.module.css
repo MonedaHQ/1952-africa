@@ -1,0 +1,56 @@
+.btnContainer {
+  display: flex;
+  gap: 3rem;
+}
+
+.btn {
+  font: inherit;
+  background-color: transparent;
+  outline: 2px solid transparent;
+  outline-offset: 0.4rem;
+  border: 1px solid var(--color-black);
+
+  padding: 1rem 2rem;
+  border-radius: 2.4rem;
+
+  cursor: pointer;
+
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.btn:focus {
+  outline: 2px solid var(--color-black);
+}
+
+.btn:hover,
+.active {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.empty {
+  text-align: center;
+}
+
+.empty svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--color-wine);
+}
+
+.textarea {
+  grid-column: 1 /-1;
+}
+
+@media only screen and (max-width: 32em) {
+  .btnContainer {
+    gap: 1.8rem;
+  }
+}
+
+@media only screen and (max-width: 24em) {
+  .btnContainer {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}

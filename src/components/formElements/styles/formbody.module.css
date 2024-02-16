@@ -1,0 +1,33 @@
+.title {
+  background-color: var(--color-light-grey);
+  padding: 1.4rem 2rem;
+}
+
+.title h4 {
+  font-weight: 500;
+}
+
+.formFields {
+  padding: 2rem 4rem;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 3rem;
+  column-gap: 3rem;
+}
+
+.buttonContainer {
+  padding: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 42em) {
+  .formFields {
+    padding: 2rem;
+    row-gap: 1.4rem;
+    column-gap: 1.4rem;
+
+    grid-template-columns: 1fr;
+  }
+}
