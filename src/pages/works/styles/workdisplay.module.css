@@ -1,0 +1,34 @@
+.main {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+
+  padding-top: 8rem;
+}
+
+.imageContainer {
+  max-width: 10%;
+
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.heading {
+  text-align: center;
+}
+
+@media only screen and (max-width: 50em) {
+  .main {
+    padding-top: 2rem;
+    height: auto;
+    min-height: auto;
+  }
+}

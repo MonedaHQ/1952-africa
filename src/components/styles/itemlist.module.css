@@ -12,7 +12,9 @@
 }
 
 .itemsContainer {
-  display: block;
+  display: grid;
+  grid-template-rows: max-content;
+  row-gap: 1.8rem;
 }
 
 .itemImageContainer img {
@@ -27,6 +29,7 @@
   align-items: center;
   grid-template-columns: max-content 1fr;
   column-gap: 3rem;
+  row-gap: 1.8rem;
 }
 
 .itemContent {
@@ -39,6 +42,11 @@
 
 .itemTitle {
   font-size: 2.2rem;
+}
+
+.content {
+  display: grid;
+  row-gap: 1.2rem;
 }
 
 @media only screen and (max-width: 61.25em) {

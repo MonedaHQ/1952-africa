@@ -11,6 +11,7 @@ function HeroSlider({ array, title }) {
   const inViewRef = useRef();
 
   const inView = useInView(inViewRef, { once: true });
+
   return (
     <Section>
       <main className={styles.main}>
@@ -21,7 +22,7 @@ function HeroSlider({ array, title }) {
           initial="initial"
           animate={inView ? 'enter' : 'initial'}
         >
-          <ImageSlider imageArray={array} />
+          <ImageSlider imageArray={['/images/motif.jpg']} />
           <div className={styles.heading}>
             <div className={styles.logoContainer}>
               <Image

@@ -8,7 +8,7 @@ function HeroAbout() {
       <main className={styles.main} id="main">
         <VideoEmbed
           title="About 1952 Africa"
-          linkUrl="https://www.youtube.com/watch?v=BdZktbv_U70"
+          linkUrl="https://www.youtube.com/watch?v=rQfIosudgxE"
         />
         <div className={styles.content}>
           <h3 className={styles.heading}>About our Foundation</h3>

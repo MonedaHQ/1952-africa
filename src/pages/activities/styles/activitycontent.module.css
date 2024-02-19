@@ -55,3 +55,32 @@
 .artistDetails p {
   opacity: 0.6;
 }
+
+@media only screen and (max-width: 80em) {
+  .contentContainer {
+    grid-template-columns: 1.5fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 69em) {
+  .contentContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 58em) {
+  .contentContainer {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+
+  .artistBox {
+    padding: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 29em) {
+  .artistBox {
+    padding: 0rem;
+  }
+}

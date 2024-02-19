@@ -1,4 +1,4 @@
-import { BASE_URL } from '@/utils/config';
+import { BASE_URL, PAGE_SIZE } from '@/utils/config';
 import { addQueryParam } from '@/utils/helpers';
 
 export async function getPrograms({
@@ -10,6 +10,7 @@ export async function getPrograms({
   let url = `${BASE_URL}/program`;
 
   url = addQueryParam(url, 'page', page);
+  url = addQueryParam(url, 'limit', PAGE_SIZE);
   url = addQueryParam(url, rangeStatus?.field, rangeStatus?.value);
   url = addQueryParam(url, searchQuery?.field, searchQuery?.value);
 

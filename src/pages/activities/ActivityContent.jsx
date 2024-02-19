@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import { slide } from '@/utils/anim';
+import Empty from '@/components/Empty';
 
 function ActivityContent({ activity, artists }) {
   return (
@@ -23,6 +24,7 @@ function ActivityContent({ activity, artists }) {
 }
 
 function Artists({ artists }) {
+  if (artists.data.length < 1) return <Empty resourceName="artists" />;
   return (
     <div className={styles.artists}>
       <h4>Artists ({artists.meta.totalItems})</h4>

@@ -14,12 +14,15 @@
   grid-template-columns: repeat(2, 1fr);
   row-gap: 3rem;
   column-gap: 3rem;
+
+  background-color: var(--color-white);
 }
 
 .buttonContainer {
   padding: 4rem;
   display: flex;
   justify-content: center;
+  background-color: var(--color-white);
 }
 
 @media only screen and (max-width: 42em) {

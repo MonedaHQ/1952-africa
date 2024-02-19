@@ -9,12 +9,14 @@ function Button({
   onMouseEnter = null,
   onMouseLeave = null,
   type = 'button',
+  disabled,
 }) {
   const commonProps = {
     className: `${styles.button} ${styles[variant]}`,
     onClick,
     onMouseEnter,
     onMouseLeave,
+    disabled,
   };
   if (href) {
     return (

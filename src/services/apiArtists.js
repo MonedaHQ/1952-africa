@@ -7,8 +7,6 @@ export async function getSpecificArtists({ program_id, activity_id }) {
   //   url = addQueryParam(url, 'program_id', program_id);
   url = addQueryParam(url, 'activity_id', activity_id);
 
-  console.log(url);
-
   try {
     const response = await fetch(url, {
       method: 'GET',
@@ -21,6 +19,27 @@ export async function getSpecificArtists({ program_id, activity_id }) {
 
     const responseData = await response.json();
     return responseData;
+  } catch (error) {
+    console.error('Error:', error.message);
+    throw new Error(error.message);
+  }
+}
+
+export async function getArtist(id) {
+  const url = `${BASE_URL}/artist/${id}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Failed to fetch data');
+    }
+
+    const responseData = await response.json();
+    return responseData.data;
   } catch (error) {
     console.error('Error:', error.message);
     throw new Error(error.message);

@@ -1,0 +1,35 @@
+.artistDetailBox {
+  max-width: max-content;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  align-items: center;
+  column-gap: 1.2rem;
+
+  padding: 4rem 0;
+  padding-top: 0;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.artistDetailBox:hover {
+  color: var(--color-green);
+}
+
+.imageContainer img {
+  border-radius: 5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+@media only screen and (max-width: 28em) {
+  .imageContainer img {
+    width: 60px;
+    height: 60px;
+  }
+  .name {
+    font-size: 1.6rem;
+  }
+}

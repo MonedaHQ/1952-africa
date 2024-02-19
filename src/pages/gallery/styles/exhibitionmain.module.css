@@ -1,0 +1,38 @@
+.main {
+  /* min-height: 40vh; */
+  max-width: max-content;
+  margin: auto;
+  padding: 10rem 0;
+  padding-bottom: 3rem;
+  display: grid;
+  grid-auto-rows: max-content;
+  align-items: center;
+  justify-items: center;
+  row-gap: 1.8rem;
+}
+
+.list {
+  list-style: none;
+  text-align: center;
+
+  display: grid;
+  row-gap: 0.4rem;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.item span {
+  padding: 0.6rem 2rem;
+  border: 1px solid var(--color-black);
+  border-radius: 2.8rem;
+}
+
+.item svg {
+  width: 2.4rem;
+  height: 2.4rem;
+}

@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import MainSection from './MainSection';
 import ActivityContent from './ActivityContent';
 import Footer from '@/components/Footer';
+import Loader from '@/components/Loader';
 
 function Activity() {
   const router = useRouter();
@@ -50,7 +51,7 @@ function Activity() {
   );
 
   if (!currentActivity || !currentProgram || !artists || !isRendered)
-    return null;
+    return <Loader />;
 
   return (
     <>

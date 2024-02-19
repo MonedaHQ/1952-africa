@@ -1,0 +1,11 @@
+.main {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  /* place-items: center; */
+  background-color: var(--color-white);
+}
+
+.textarea {
+  grid-column: 1 / -1;
+}

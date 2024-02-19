@@ -1,7 +1,8 @@
 import ItemList from '@/components/ItemList';
+import Loader from '@/components/Loader';
 
 function Programs({ programs, isLoading }) {
-  if (isLoading) return;
+  if (isLoading) return <Loader />;
   return (
     <ItemList
       title="Explore our programs"

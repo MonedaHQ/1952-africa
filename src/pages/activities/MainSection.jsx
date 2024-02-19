@@ -63,9 +63,8 @@ function Video({ videoLink, activity }) {
         height="315"
         src={videoLink}
         title={activity.title}
-        frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
+        allowFullScreen
       ></iframe>
     </div>
   );

@@ -8,6 +8,7 @@ import { scrollOffset } from '@/utils/config';
 
 import styles from './explore/styles/explore.module.css';
 import Button from '@/components/Button';
+
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { slideUp } from '@/utils/anim';
@@ -21,7 +22,7 @@ function Explore() {
         title="Explore - 1952 Africa"
         description="Empowering African Creativity - Explore the essence of 1952Africa, our mission, and the incredible artistry we're empowering. Join us on this inspiring journey and see the change you're making possible."
       />
-      <Navigation scrollPosition={scrollPosition} darkHero={true} />
+      <Navigation scrollPosition={scrollPosition} darkHero={true} bg={false} />
       <BurgerNavigation />
       <ExploreContent />
     </>

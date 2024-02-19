@@ -51,7 +51,8 @@ function Item({ item, index, navigateTo, btnLabel }) {
 
   const router = useRouter();
 
-  const truncatedDescription = truncateString(item.description, 64);
+  const truncatedDescription =
+    item.description && truncateString(item.description, 64);
 
   return (
     <motion.div
@@ -74,7 +75,7 @@ function Item({ item, index, navigateTo, btnLabel }) {
       <div className={styles.itemContent}>
         <div className={styles.content}>
           <h4 className={styles.itemTitle}>{item.title}</h4>
-          <p>{truncatedDescription}</p>
+          <p>{truncatedDescription || item.medium} </p>
         </div>
         <Button
           variant="primary"

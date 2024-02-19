@@ -14,7 +14,8 @@
   justify-content: center;
   background-color: var(--color-white);
   border-radius: 50rem;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
   position: relative;
   z-index: 8;
