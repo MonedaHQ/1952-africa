@@ -1,21 +1,7 @@
 import { BASE_URL } from '@/utils/config';
 
-export async function getExhibitions({ rangeStatus, searchQuery, sortMethod }) {
+export async function getExhibitions() {
   let url = `${BASE_URL}/exhibition`;
-
-  if (rangeStatus) {
-    url = `${url}?${rangeStatus.field}=${rangeStatus.value}`;
-  }
-
-  if (searchQuery) {
-    url = `${url}?${searchQuery.field}=${searchQuery.value}`;
-  }
-
-  if (sortMethod) {
-    sortMethod.field === 'sortOrder'
-      ? (url = `${url}?sort=year&${sortMethod.field}=${sortMethod.value}`)
-      : (url = `${url}?${sortMethod.field}=${sortMethod.value}`);
-  }
 
   try {
     const response = await fetch(`${url}`, {
@@ -27,7 +13,7 @@ export async function getExhibitions({ rangeStatus, searchQuery, sortMethod }) {
     }
 
     const responseData = await response.json();
-    return responseData.data;
+    return responseData;
   } catch (error) {
     console.error('Error:', error.message);
     throw new Error(error.message);

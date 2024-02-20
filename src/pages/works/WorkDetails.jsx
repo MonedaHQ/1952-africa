@@ -18,6 +18,7 @@ function WorkDetails({ work, exhibition }) {
                   work.is_available ? styles.green : styles.fail
                 }`}
               >
+                {work.is_available ? 'Available' : 'Sold'}
                 <span>
                   {' '}
                   {work.is_available ? (
@@ -26,7 +27,6 @@ function WorkDetails({ work, exhibition }) {
                     <PiMinusCircleFill />
                   )}
                 </span>
-                {work.is_available ? 'Available' : 'Sold'}
               </p>
             </div>
             <ul className={styles.content}>

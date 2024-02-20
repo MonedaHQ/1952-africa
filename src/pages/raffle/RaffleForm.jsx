@@ -3,6 +3,7 @@ import FormBody from '@/components/formElements/FormBody';
 import FormContainer from '@/components/formElements/FormContainer';
 import FormInput from '@/components/formElements/FormInput';
 import FormMain from '@/components/formElements/FormMain';
+import { donate } from '@/services/apiDonate';
 import { useEffect, useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 
@@ -15,21 +16,36 @@ function RaffleForm() {
 
   const formActions = { register, errors };
 
+  const [isNavigating, setIsNavigating] = useState(false);
+
   useEffect(() => {
     switch (currency) {
       case 'USD':
         setAmount(500);
         break;
       case 'NGN':
-        setAmount(500 * 1400);
+        setAmount(500 * 1000);
         break;
       default:
         setAmount(0);
     }
   }, [currency, setValue]);
 
-  function onSubmit(data) {
-    console.log(data);
+  async function onSubmit(data) {
+    setIsNavigating(true);
+    const newData = {
+      ...data,
+      currency: currency,
+      amount: currency === 'NGN' ? 500000 : 500,
+    };
+
+    console.log(newData);
+    const resData = await donate(newData);
+
+    const { data: response } = resData;
+
+    const { link } = response;
+    window.location.href = link;
   }
 
   return (
@@ -40,7 +56,7 @@ function RaffleForm() {
           onSubmit={onSubmit}
           padding={false}
         >
-          <FormBody title="Purchase your raffle ticket">
+          <FormBody title="Purchase your raffle ticket" disabled={isNavigating}>
             <FormInput
               type="text"
               id="first_name"

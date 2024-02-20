@@ -58,7 +58,7 @@ function InquirePage({ work, artist }) {
                 <FormInput
                   type="textarea"
                   id="description"
-                  label="Brief description of the item"
+                  label="Message"
                   placeholder="Your message goes here"
                   formActions={formActions}
                   defaultValue={`I am interested in ${work.title} by ${artist.first_name} ${artist.last_name}. Can I find out more about this work?`}

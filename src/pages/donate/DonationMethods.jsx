@@ -12,6 +12,9 @@ import FormContainer from '@/components/formElements/FormContainer';
 import FormBody from '@/components/formElements/FormBody';
 import FormInput from '@/components/formElements/FormInput';
 import FormMain from '@/components/formElements/FormMain';
+import { useState } from 'react';
+import { donate } from '@/services/apiDonate';
+import { useSubmitForm } from '@/hooks/useSubmitForm';
 
 function DonationMethods() {
   const router = useRouter();
@@ -21,22 +24,61 @@ function DonationMethods() {
 
   const formActions = { register, errors };
 
+  const { submitForm, isSubmitting } = useSubmitForm();
+
+  const [isNavigating, setIsNavigating] = useState(false);
+
   let form;
 
   if (!method) {
     form = <NothingSelected />;
   } else if (method) {
     if (method === 'financial') {
-      form = <FinancialDonation formActions={formActions} />;
+      form = (
+        <FinancialDonation
+          formActions={formActions}
+          isNavigating={isNavigating}
+        />
+      );
     } else if (method === 'items') {
-      form = <ItemDonation formActions={formActions} />;
+      form = (
+        <ItemDonation formActions={formActions} isNavigating={isNavigating} />
+      );
     } else if (method === 'partner') {
-      form = <Partner formActions={formActions} />;
+      form = <Partner formActions={formActions} isNavigating={isNavigating} />;
     }
   }
 
-  function onSubmit(data) {
-    console.log(data);
+  async function onSubmit(data) {
+    setIsNavigating(true);
+    if (method === 'financial') {
+      await financialDonation(data);
+    } else if (method === 'items') {
+      submitForm(
+        { data, subject: 'Item Donation Request' },
+        { onSuccess: () => router.push('/') }
+      );
+    } else if (method === 'partner') {
+      submitForm(
+        { data, subject: 'Partnership Request' },
+        { onSuccess: () => router.push('/') }
+      );
+    }
+  }
+
+  async function financialDonation(data) {
+    const newData = {
+      ...data,
+      amount: +data.amount,
+      currency: data.currency === undefined ? 'NGN' : data.currency,
+      for_raffle: false,
+    };
+    const resData = await donate(newData);
+
+    const { data: response } = resData;
+
+    const { link } = response;
+    window.location.href = link;
   }
 
   return (
@@ -97,9 +139,9 @@ function NothingSelected() {
   );
 }
 
-function FinancialDonation({ formActions }) {
+function FinancialDonation({ formActions, isNavigating }) {
   return (
-    <FormBody title="Make a financial donation">
+    <FormBody title="Make a financial donation" disabled={isNavigating}>
       <>
         <FormInput
           type="text"
@@ -152,9 +194,9 @@ function FinancialDonation({ formActions }) {
   );
 }
 
-function ItemDonation({ formActions }) {
+function ItemDonation({ formActions, isNavigating }) {
   return (
-    <FormBody title="Make am item donation">
+    <FormBody title="Make am item donation" disabled={isNavigating}>
       <>
         <FormInput
           type="text"
@@ -199,9 +241,9 @@ function ItemDonation({ formActions }) {
   );
 }
 
-function Partner({ formActions }) {
+function Partner({ formActions, isNavigating }) {
   return (
-    <FormBody title="Partner with us on events">
+    <FormBody title="Partner with us on events" disabled={isNavigating}>
       <>
         <FormInput
           type="text"

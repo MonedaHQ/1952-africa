@@ -14,13 +14,13 @@ export const homeMenuLinks = [
       { path: '/events', label: 'Events' },
     ],
   },
-  {
-    path: null,
-    label: 'Blog',
-    icon: null,
-    icon2: null,
-    dropdown: null,
-  },
+  // {
+  //   path: null,
+  //   label: 'Blog',
+  //   icon: null,
+  //   icon2: null,
+  //   dropdown: null,
+  // },
   {
     path: '/about',
     label: 'About',

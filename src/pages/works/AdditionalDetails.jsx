@@ -4,6 +4,8 @@ import { convertToEmbedLink } from '@/utils/helpers';
 import styles from './styles/additionaldetails.module.css';
 
 function AdditionalDetails({ work }) {
+  if (!work.video_url || work.video_url === '') return null;
+
   const youtubeEmbedLink = convertToEmbedLink(work.video_url);
 
   return (

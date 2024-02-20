@@ -9,8 +9,8 @@ function ExhibitionMain({ exhibition }) {
       <main className={styles.main}>
         <div className={styles.imageContainer}>
           <Image
-            width={200}
-            height={200}
+            width={280}
+            height={280}
             src={exhibition.image_url}
             alt={exhibition.title}
             className={styles.image}

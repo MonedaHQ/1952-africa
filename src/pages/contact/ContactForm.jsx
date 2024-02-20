@@ -6,15 +6,27 @@ import FormMain from '@/components/formElements/FormMain';
 import { useForm } from 'react-hook-form';
 
 import styles from './styles/contactform.module.css';
+import { useSubmitForm } from '@/hooks/useSubmitForm';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 function ContactForm() {
+  const router = useRouter();
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
   const formActions = { register, errors };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { submitForm } = useSubmitForm();
+
   function onSubmit(data) {
-    console.log(data);
+    setIsSubmitting(true);
+    submitForm(
+      { data, subject: 'Contact Form Submission' },
+      { onSuccess: () => router.push('/') }
+    );
   }
 
   return (
@@ -25,7 +37,7 @@ function ContactForm() {
           onSubmit={onSubmit}
           padding={false}
         >
-          <FormBody title="We'd love to hear from you!">
+          <FormBody title="We'd love to hear from you!" disabled={isSubmitting}>
             <FormInput
               type="text"
               id="first_name"
@@ -59,7 +71,7 @@ function ContactForm() {
               <FormInput
                 type="textarea"
                 id="description"
-                label="Brief description of the item"
+                label="Message"
                 placeholder="Your message goes here"
                 formActions={formActions}
               />

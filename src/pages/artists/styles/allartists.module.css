@@ -1,0 +1,70 @@
+.main {
+  display: grid;
+  row-gap: 1.8rem;
+}
+
+.artistContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1.8rem;
+  row-gap: 1.8rem;
+}
+
+.artistCard {
+  background-color: var(--color-light-grey);
+  padding: 0.6rem;
+  border-radius: 1.8rem;
+  overflow: hidden;
+
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.artistCard:hover {
+  transform: scale(1.04);
+  background-color: var(--color-green);
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.innerArtistCard {
+  background-color: var(--color-white);
+  padding: 1.2rem;
+  border-radius: 1.4rem;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.6rem;
+  align-items: center;
+}
+
+.imageContainer img {
+  border-radius: 5rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+@media only screen and (max-width: 68.75em) {
+  .artistContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 45em) {
+  .artistContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 25em) {
+  .imageContainer img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .artistInfo h3 {
+    font-size: 1.8rem;
+  }
+}

@@ -14,6 +14,7 @@ function WorkDisplay({ work }) {
             height={1080}
             alt={work.title}
             className={styles.image}
+            draggable={false}
           />
         </div>
         <div>
