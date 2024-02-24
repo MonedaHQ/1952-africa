@@ -64,7 +64,7 @@ function ArtistDetails({ artist, activity, works }) {
 }
 
 function Video({ videoLink, artist }) {
-  if (!videoLink || !works) return <Loader />;
+  if (!videoLink || !artist) return <Loader />;
 
   return (
     <div className={styles.videoContainer}>
