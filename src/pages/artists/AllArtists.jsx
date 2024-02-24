@@ -9,13 +9,13 @@ function AllArtists({ artists }) {
   return (
     <Section>
       <main className={styles.main}>
-        <h2>All artists ({artists.meta.totalItems})</h2>
+        <h2>All artists ({artists?.meta?.totalItems})</h2>
         <div className={styles.artistContainer}>
-          {artists.data.map((artist) => (
+          {artists?.data?.map((artist) => (
             <Artist key={artist.id} artist={artist} />
           ))}
         </div>
-        <Pagination count={artists.meta.totalItems} />
+        <Pagination count={artists?.meta?.totalItems} />
       </main>
     </Section>
   );

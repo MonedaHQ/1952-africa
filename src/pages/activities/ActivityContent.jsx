@@ -6,8 +6,10 @@ import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import { slide } from '@/utils/anim';
 import Empty from '@/components/Empty';
+import Loader from '@/components/Loader';
 
 function ActivityContent({ activity, artists }) {
+  if (!activity || !artists) return <Loader />;
   return (
     <Section>
       <div className={styles.contentContainer}>

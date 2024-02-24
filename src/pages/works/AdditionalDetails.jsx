@@ -2,8 +2,10 @@ import Section from '@/components/Section';
 import { convertToEmbedLink } from '@/utils/helpers';
 
 import styles from './styles/additionaldetails.module.css';
+import Loader from '@/components/Loader';
 
 function AdditionalDetails({ work }) {
+  if (!work) return <Loader />;
   if (!work.video_url || work.video_url === '') return null;
 
   const youtubeEmbedLink = convertToEmbedLink(work.video_url);

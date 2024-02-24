@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import Exhibitions from './gallery/Exhibitions';
 import Footer from '@/components/Footer';
 
-function gallery() {
+function Gallery() {
   const scrollPosition = useScrollPosition(scrollOffset);
 
   const [exhibitions, setExhibitions] = useState(null);
@@ -57,4 +57,4 @@ function gallery() {
   );
 }
 
-export default gallery;
+export default Gallery;

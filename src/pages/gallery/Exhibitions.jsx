@@ -1,6 +1,8 @@
 import ItemList from '@/components/ItemList';
+import Loader from '@/components/Loader';
 
 function Exhibitions({ exhibitions }) {
+  if (!exhibitions) return <Loader />;
   return (
     <ItemList
       title={`Exhibitions`}

@@ -8,7 +8,7 @@ import { scrollOffset } from '@/utils/config';
 import EventsList from './events/EventsList';
 import Footer from '@/components/Footer';
 
-function events() {
+function Events() {
   const scrollPosition = useScrollPosition(scrollOffset);
   return (
     <>
@@ -27,4 +27,4 @@ function events() {
   );
 }
 
-export default events;
+export default Events;

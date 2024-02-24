@@ -6,8 +6,10 @@ import { convertToEmbedLink } from '@/utils/helpers';
 import { PiClipboardTextLight, PiUserPlus } from 'react-icons/pi';
 import Button from '@/components/Button';
 import { useRouter } from 'next/router';
+import Loader from '@/components/Loader';
 
 function MainSection({ activity, program, artists }) {
+  if (!activity || !program || !artists) return <Loader />;
   const youtubeEmbedLink = convertToEmbedLink(activity.video_url) || '';
   return (
     <Section>

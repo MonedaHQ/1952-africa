@@ -5,12 +5,15 @@ import { useForm } from 'react-hook-form';
 import FormContainer from '@/components/formElements/FormContainer';
 import FormBody from '@/components/formElements/FormBody';
 import FormInput from '@/components/formElements/FormInput';
+import Loader from '@/components/Loader';
 
 function InquirePage({ work, artist }) {
   const { register, formState, handleSubmit, setValue } = useForm();
   const { errors } = formState;
 
   const formActions = { register, errors };
+
+  if (!work || !artist) return <Loader />;
 
   function onSubmit(data) {
     console.log(data);

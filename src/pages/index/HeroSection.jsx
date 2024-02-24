@@ -12,10 +12,13 @@ import { useSmoothScroll } from '@/context/SmoothScrollContext';
 import ImageSlider from '@/components/ImageSlider';
 import { useRouter } from 'next/router';
 import BgHero from '@/components/BgHero';
+import Loader from '@/components/Loader';
 
 function HeroSection({ motion }) {
   const { handleScrollTo } = useSmoothScroll();
   const router = useRouter();
+
+  if (!motion) return <Loader />;
 
   return (
     <BgHero slideShow={slideshowImages}>

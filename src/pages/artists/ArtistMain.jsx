@@ -10,9 +10,12 @@ import {
 } from 'react-icons/pi';
 import Button from '@/components/Button';
 import Image from 'next/image';
+import Loader from '@/components/Loader';
 
 function ArtistMain({ artist, activity, works }) {
-  const youtubeEmbedLink = convertToEmbedLink(artist.video_url) || '';
+  const router = useRouter();
+  if (!activity || !artist || !works) return <Loader />;
+  const youtubeEmbedLink = convertToEmbedLink(artist?.video_url) || '';
   return (
     <Section>
       <main className={styles.main}>
@@ -24,7 +27,6 @@ function ArtistMain({ artist, activity, works }) {
 }
 
 function ArtistDetails({ artist, activity, works }) {
-  const router = useRouter();
   return (
     <div className={styles.artistDetails}>
       <div className={styles.artistImageAndTitle}>
@@ -62,6 +64,8 @@ function ArtistDetails({ artist, activity, works }) {
 }
 
 function Video({ videoLink, artist }) {
+  if (!videoLink || !works) return <Loader />;
+
   return (
     <div className={styles.videoContainer}>
       <iframe

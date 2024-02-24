@@ -2,8 +2,10 @@ import Section from '@/components/Section';
 import styles from './styles/exhibitionmain.module.css';
 import Image from 'next/image';
 import { PiCalendarLight } from 'react-icons/pi';
+import Loader from '@/components/Loader';
 
 function ExhibitionMain({ exhibition }) {
+  if (!exhibition) return <Loader />;
   return (
     <Section>
       <main className={styles.main}>

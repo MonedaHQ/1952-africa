@@ -3,9 +3,13 @@ import styles from './styles/workdetails.module.css';
 import { PiCheckCircleFill, PiMinusCircleFill } from 'react-icons/pi';
 import Button from '@/components/Button';
 import { useRouter } from 'next/router';
+import Loader from '@/components/Loader';
 
 function WorkDetails({ work, exhibition }) {
   const router = useRouter();
+
+  if (!work || !exhibition) return <Loader />;
+
   return (
     <Section>
       <main className={styles.main}>

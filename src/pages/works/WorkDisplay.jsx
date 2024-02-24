@@ -2,8 +2,10 @@ import Section from '@/components/Section';
 import Image from 'next/image';
 
 import styles from './styles/workdisplay.module.css';
+import Loader from '@/components/Loader';
 
 function WorkDisplay({ work }) {
+  if (!work) return <Loader />;
   return (
     <Section>
       <main className={styles.main}>

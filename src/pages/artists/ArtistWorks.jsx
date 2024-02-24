@@ -7,14 +7,15 @@ import Pagination from '@/components/Pagination';
 
 import { PiCheckCircleFill, PiMinusCircleFill } from 'react-icons/pi';
 import { useRouter } from 'next/router';
+import Loader from '@/components/Loader';
 
 function ArtistWorks({ works }) {
   return (
     <Section>
       <main className={styles.main}>
-        <h3 className={styles.heading}>Works ({works.meta.totalItems})</h3>
-        <Works works={works.data} />
-        <Pagination count={works.meta.totalItems} />
+        <h3 className={styles.heading}>Works ({works?.meta?.totalItems})</h3>
+        <Works works={works?.data} />
+        <Pagination count={works?.meta?.totalItems} />
       </main>
     </Section>
   );
@@ -22,6 +23,9 @@ function ArtistWorks({ works }) {
 
 function Works({ works }) {
   const router = useRouter();
+
+  if (!works) return <Loader />;
+
   return (
     <div className={styles.works}>
       {works.map((work) => (

@@ -2,9 +2,11 @@ import Image from 'next/image';
 
 import styles from './styles/artistDetails.module.css';
 import { useRouter } from 'next/router';
+import Loader from '@/components/Loader';
 
 function ArtistDetails({ artist }) {
   const router = useRouter();
+  if (!artist) return <Loader />;
   return (
     <div
       className={styles.artistDetailBox}
