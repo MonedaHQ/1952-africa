@@ -42,7 +42,7 @@ function Navigation({ scrollPosition, darkHero = false, bg = true }) {
       </nav>
 
       <Button variant={buttonStyle} onClick={() => router.push('/donate')}>
-        Support us
+        Support Us
       </Button>
     </header>
   );

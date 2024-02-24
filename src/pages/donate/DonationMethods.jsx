@@ -1,10 +1,10 @@
-import { HiOutlineHandRaised } from 'react-icons/hi2';
+import { HiOutlineHandRaised, HiOutlineMinusCircle } from 'react-icons/hi2';
 
 import Section from '@/components/Section';
 import { useRouter } from 'next/router';
 
 import styles from './styles/donationmethods.module.css';
-import { capitalizeFirstLetter } from '@/utils/helpers';
+import { capitalizeFirstLetter, getCurrentDateString } from '@/utils/helpers';
 
 import { useForm } from 'react-hook-form';
 
@@ -12,9 +12,11 @@ import FormContainer from '@/components/formElements/FormContainer';
 import FormBody from '@/components/formElements/FormBody';
 import FormInput from '@/components/formElements/FormInput';
 import FormMain from '@/components/formElements/FormMain';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { donate } from '@/services/apiDonate';
 import { useSubmitForm } from '@/hooks/useSubmitForm';
+import Loader from '@/components/Loader';
+import { getEvents } from '@/services/apiEvents';
 
 function DonationMethods() {
   const router = useRouter();
@@ -28,10 +30,37 @@ function DonationMethods() {
 
   const [isNavigating, setIsNavigating] = useState(false);
 
+  const date = getCurrentDateString();
+  const [isRendered, setIsRendered] = useState(false);
+  const [upcomingEvents, setUpcomingEvents] = useState(null);
+
+  useEffect(
+    function () {
+      async function fetchEvents() {
+        const upcomingEvents = await getEvents({
+          start_date: date,
+          sponsored: true,
+        });
+        setUpcomingEvents(upcomingEvents.data);
+      }
+
+      fetchEvents(date);
+      setIsRendered(true);
+    },
+    [date]
+  );
+
+  if (!isRendered || !upcomingEvents) return <Loader />;
+
   let form;
 
   if (!method) {
-    form = <NothingSelected />;
+    form = (
+      <NothingSelected
+        icon={<HiOutlineHandRaised />}
+        paragraph="Please select a donation method to continue"
+      />
+    );
   } else if (method) {
     if (method === 'financial') {
       form = (
@@ -45,7 +74,22 @@ function DonationMethods() {
         <ItemDonation formActions={formActions} isNavigating={isNavigating} />
       );
     } else if (method === 'partner') {
-      form = <Partner formActions={formActions} isNavigating={isNavigating} />;
+      if (upcomingEvents.length < 1) {
+        form = (
+          <NothingSelected
+            icon={<HiOutlineMinusCircle />}
+            paragraph="There are currently no events available for partnership"
+          />
+        );
+      } else {
+        form = (
+          <Partner
+            formActions={formActions}
+            isNavigating={isNavigating}
+            upcomingEvents={upcomingEvents}
+          />
+        );
+      }
     }
   }
 
@@ -130,11 +174,11 @@ function ChooseMethod({ reset }) {
   );
 }
 
-function NothingSelected() {
+function NothingSelected({ icon, paragraph }) {
   return (
     <div className={styles.empty}>
-      <HiOutlineHandRaised />
-      <p>Please select a donation method to continue</p>
+      {icon}
+      <p>{paragraph}</p>
     </div>
   );
 }
@@ -241,7 +285,7 @@ function ItemDonation({ formActions, isNavigating }) {
   );
 }
 
-function Partner({ formActions, isNavigating }) {
+function Partner({ formActions, isNavigating, upcomingEvents }) {
   return (
     <FormBody title="Partner with us on events" disabled={isNavigating}>
       <>
@@ -288,7 +332,11 @@ function Partner({ formActions, isNavigating }) {
           label="Select event"
           formActions={formActions}
         >
-          <option value="">Please select...</option>
+          {upcomingEvents.map((event) => (
+            <option value={event.title} key={event.id}>
+              {event.title}
+            </option>
+          ))}
         </FormInput>
       </>
     </FormBody>

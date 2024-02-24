@@ -1,21 +1,23 @@
-import { BASE_URL } from '@/utils/config';
+import { BASE_URL, PAGE_SIZE } from '@/utils/config';
+import { addQueryParam } from '@/utils/helpers';
 
-export async function getEvents({ rangeStatus, searchQuery, sortMethod }) {
+export async function getEvents({
+  start_date = null,
+  start_date_running = null,
+  end_date = null,
+  end_date_running = null,
+  sponsored = null,
+}) {
   let url = `${BASE_URL}/event`;
 
-  if (rangeStatus) {
-    url = `${url}?${rangeStatus.field}=${rangeStatus.value}`;
-  }
+  url = addQueryParam(url, 'start_date_gte', start_date);
+  url = addQueryParam(url, 'start_date_lte', start_date_running);
+  url = addQueryParam(url, 'end_date_lte', end_date);
+  url = addQueryParam(url, 'end_date_gte', end_date_running);
+  url = addQueryParam(url, 'limit', PAGE_SIZE);
 
-  if (searchQuery) {
-    url = `${url}?${searchQuery.field}=${searchQuery.value}`;
-  }
-
-  if (sortMethod) {
-    sortMethod.field === 'sortOrder'
-      ? (url = `${url}?sort=title&${sortMethod.field}=${sortMethod.value}`)
-      : (url = `${url}?${sortMethod.field}=${sortMethod.value}`);
-    console.log(url);
+  if (sponsored) {
+    url = addQueryParam(url, 'sponsored', sponsored);
   }
 
   try {
@@ -28,7 +30,7 @@ export async function getEvents({ rangeStatus, searchQuery, sortMethod }) {
     }
 
     const responseData = await response.json();
-    return responseData.data;
+    return responseData;
   } catch (error) {
     console.error('Error:', error.message);
     throw new Error(error.message);

@@ -5,6 +5,8 @@ import BurgerNavigation from '@/components/navcomponents/burgerNav/BurgerNavigat
 import Navigation from '@/components/navcomponents/mainNav/Navigation';
 import useScrollPosition from '@/hooks/useScrollPosition';
 import { scrollOffset } from '@/utils/config';
+import EventsList from './events/EventsList';
+import Footer from '@/components/Footer';
 
 function events() {
   const scrollPosition = useScrollPosition(scrollOffset);
@@ -18,6 +20,9 @@ function events() {
       <BurgerNavigation />
       <HeroSlider title="Our Events" />
       <Bands />
+      <EventsList />
+      <Bands />
+      <Footer />
     </>
   );
 }
