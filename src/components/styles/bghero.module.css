@@ -21,7 +21,7 @@
   object-fit: cover;
   object-position: center;
 
-  filter: brightness(0.1) contrast(1.01) saturate(1.2);
+  filter: brightness(0.2) contrast(1.01) saturate(1.2);
   animation: zoomInOut 20s infinite;
   z-index: -2;
 }

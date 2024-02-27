@@ -3,6 +3,7 @@ import styles from './styles/bghero.module.css';
 import ImageSlider from './ImageSlider';
 
 function BgHero({ children, slideShow }) {
+  if (!slideShow) return;
   return (
     <section className={styles.heroSection}>
       <div className={styles.backgroundImgContainer}>
