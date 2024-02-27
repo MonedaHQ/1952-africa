@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import ImageSlider from './ImageSlider';
 import styles from './styles/bghero.module.css';
+import ImageSlider from './ImageSlider';
 
 function BgHero({ children, slideShow }) {
   return (

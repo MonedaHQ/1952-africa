@@ -1,48 +1,43 @@
-import Image from 'next/image';
-import Slider from 'react-slick';
-
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { EffectFade } from 'swiper/modules';
+import 'swiper/css'; // Import swiper bundle CSS
 
 import styles from './styles/imageslider.module.css';
 
 function ImageSlider({ imageArray }) {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 3500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    fade: true,
-    cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+  const swiperStyles = {
+    height: '100vh',
   };
+
   return (
-    <Slider {...settings}>
+    <Swiper
+      {...swiperStyles}
+      autoplay={{ delay: 0 }}
+      effect="fade"
+      modules={[EffectFade]}
+    >
       {imageArray.map((image, index) => (
-        <div key={index} className={styles.sliderContainer}>
+        <SwiperSlide key={index} className={styles.sliderContainer}>
           {typeof image === 'string' ? (
-            <Image
+            <img
               src={image}
-              width={1728}
-              height={1119}
               alt={`Slide ${index + 1}`}
+              className={styles.sliderImage}
             />
           ) : (
             <div className={styles.imageAndCaption}>
-              <Image
+              <img
                 src={image.imagePath}
-                width={1728}
-                height={1119}
                 alt={`Slide ${index + 1}`}
+                className={styles.sliderImage}
               />
               <p>{image.caption}</p>
             </div>
           )}
-        </div>
+        </SwiperSlide>
       ))}
-    </Slider>
+    </Swiper>
   );
 }
 
