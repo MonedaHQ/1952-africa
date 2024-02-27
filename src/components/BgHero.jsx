@@ -14,14 +14,9 @@ function BgHero({ children, slideShow }) {
   const images = [
     '/images/slideshow/dewdrops-of-emotions.jpg',
 
-    '/images/slideshow/fading-riches.jpg',
     '/images/slideshow/father-nature.JPG',
 
     '/images/slideshow/in-retrospect.JPG',
-
-    '/images/slideshow/making-love-to-a-memory.jpg',
-
-    '/images/slideshow/man-the-unfree.jpg',
 
     '/images/slideshow/oduduwas-descent.JPG',
     '/images/slideshow/reflecting-ourselves.jpg',
