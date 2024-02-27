@@ -12,31 +12,23 @@ function BgHero({ children, slideShow }) {
   // ];
 
   const images = [
-    '/images/slideshow/a-smile-from-a-stranger.jpg',
-
     '/images/slideshow/dewdrops-of-emotions.jpg',
 
-    '/images/slideshow/ego-of-a-god.jpg',
     '/images/slideshow/fading-riches.jpg',
     '/images/slideshow/father-nature.JPG',
-
-    '/images/slideshow/gesture-of-inclusion.jpg',
 
     '/images/slideshow/in-retrospect.JPG',
 
     '/images/slideshow/making-love-to-a-memory.jpg',
 
     '/images/slideshow/man-the-unfree.jpg',
-    '/images/slideshow/misery-loves-company.jpg',
 
     '/images/slideshow/oduduwas-descent.JPG',
     '/images/slideshow/reflecting-ourselves.jpg',
 
     '/images/slideshow/scar.JPG',
-    '/images/slideshow/take-care-of-me.jpg',
-    '/images/slideshow/torn-melodies.jpg',
 
-    '/images/slideshow/white-noise.JPG',
+    '/images/slideshow/torn-melodies.jpg',
   ];
   return (
     <section className={styles.heroSection}>
