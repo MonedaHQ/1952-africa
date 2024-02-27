@@ -3,7 +3,7 @@
   background-color: black;
 
   position: relative;
-  z-index: -2;
+  z-index: 1;
 }
 
 .backgroundImgContainer {
@@ -23,7 +23,7 @@
   object-fit: cover;
   object-position: center;
 
-  filter: brightness(0.5) contrast(1.01) saturate(1.2);
+  filter: brightness(0.4) contrast(1.01) saturate(1.2);
   animation: zoomInOut 20s infinite;
   z-index: -2;
 }
@@ -37,6 +37,11 @@
 .logoContainer img {
   width: 80px;
   height: auto;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1000;
 }
 
 @keyframes zoomInOut {
