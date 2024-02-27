@@ -52,9 +52,9 @@ function Description({ description, ticketsLeft, totalTickets }) {
         <p>{description}</p>
       </div>
       <div className={styles.cta}>
-        <p>
+        {/* <p>
           ({ticketsLeft} out of {totalTickets} tickets left)
-        </p>
+        </p> */}
         <Button variant="primary" onClick={() => router.push('/raffle')}>
           Purchase ticket
         </Button>
@@ -75,10 +75,10 @@ function RaffleDetails({ photo, endDate }) {
           draggable={false}
         />
       </div>
-      <div className={styles.raffleTimer}>
+      {/* <div className={styles.raffleTimer}>
         <p>Raffle ends in</p>
         <CountdownTimer endDate={endDate} />
-      </div>
+      </div> */}
     </div>
   );
 }

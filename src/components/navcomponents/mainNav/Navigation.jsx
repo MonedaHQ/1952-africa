@@ -9,7 +9,7 @@ import { homeMenuLinks } from '@/data/menu';
 import { useRouter } from 'next/router';
 
 function Navigation({ scrollPosition, darkHero = false, bg = true }) {
-  const isHero = scrollPosition > 120;
+  const isHero = scrollPosition > 100;
   const router = useRouter();
 
   const dark = darkHero && !isHero ? 'dark' : '';

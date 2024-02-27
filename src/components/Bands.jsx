@@ -12,10 +12,11 @@ function Bands({ double = false }) {
 
 function Band({ direction }) {
   const bands = Array.from({ length: 20 }, () => `/assets/band.png`);
+  const allBands = [...bands, ...bands];
   return (
     <div className={styles.bandsContainer}>
       <div className={`${styles.scrollContainer} ${styles[direction]}`}>
-        {bands.map((band, index) => (
+        {allBands.map((band, index) => (
           <Image
             key={index}
             src={band}

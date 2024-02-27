@@ -49,7 +49,7 @@ body {
   background-color: var(--color-bg);
   min-height: 100vh;
   line-height: 1.5;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   transition: color 0.2s, background-color 0.3s;
 }
 
