@@ -13,16 +13,11 @@ function BgHero({ children, slideShow }) {
 
   const images = [
     '/images/slideshow/dewdrops-of-emotions.jpg',
-
     '/images/slideshow/father-nature.JPG',
-
     '/images/slideshow/in-retrospect.JPG',
-
     '/images/slideshow/oduduwas-descent.JPG',
     '/images/slideshow/reflecting-ourselves.jpg',
-
     '/images/slideshow/scar.JPG',
-
     '/images/slideshow/torn-melodies.jpg',
   ];
   return (
