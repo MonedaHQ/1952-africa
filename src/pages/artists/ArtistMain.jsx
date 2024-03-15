@@ -13,7 +13,6 @@ import Image from 'next/image';
 import Loader from '@/components/Loader';
 
 function ArtistMain({ artist, activity, works }) {
-  const router = useRouter();
   if (!activity || !artist || !works) return <Loader />;
   const youtubeEmbedLink = convertToEmbedLink(artist?.video_url) || '';
   return (
@@ -27,6 +26,7 @@ function ArtistMain({ artist, activity, works }) {
 }
 
 function ArtistDetails({ artist, activity, works }) {
+  const router = useRouter();
   return (
     <div className={styles.artistDetails}>
       <div className={styles.artistImageAndTitle}>
