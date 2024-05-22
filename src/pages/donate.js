@@ -8,6 +8,7 @@ import Bands from '@/components/Bands';
 import DonateContent from './donate/DonateContent';
 import DonationMethods from './donate/DonationMethods';
 import Footer from '@/components/Footer';
+import SupportArtsAccelerator from './donate/SupportArtsAccelerator';
 
 function Donate() {
   const scrollPosition = useScrollPosition(scrollOffset);
@@ -23,6 +24,7 @@ function Donate() {
       <Bands />
       <DonateContent />
       <DonationMethods />
+      <SupportArtsAccelerator />
       <Bands />
       <Footer />
     </>

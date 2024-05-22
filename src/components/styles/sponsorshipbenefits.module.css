@@ -1,0 +1,15 @@
+.listBox {
+}
+
+.heading {
+  font-size: 2.6rem;
+}
+
+.list {
+  padding-left: 3rem;
+}
+
+.icon svg {
+  width: 4rem;
+  height: 4rem;
+}
