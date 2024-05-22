@@ -44,6 +44,16 @@ function SupportArtsAccelerator() {
         />
       </Section>
       <SponsorBenefits />
+      <Section>
+        <p>
+          To discuss how you can become a sponsor and contribute to the 1952
+          Africa Arts Accelerator, please send a mail to{' '}
+          <a href="mailto:amanda.m@1952africa.art">Amanda M</a> or{' '}
+          <a href="tel:+234-816-933-5305">call her</a>. Amanda will provide
+          further details and tailor a sponsorship package that aligns with your
+          interests and objectives.{' '}
+        </p>
+      </Section>
     </div>
   );
 }
