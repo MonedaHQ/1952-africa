@@ -89,7 +89,7 @@ function SponsorBenefits() {
     <Section>
       <div className={styles.listContainer}>
         {listAssets.map((item) => (
-          <div className={styles.listBox}>
+          <div className={styles.listBox} key={item.title}>
             <SponsorshipBenefitList
               icon={item.icon}
               title={item.title}
