@@ -45,7 +45,7 @@ function DonationMethodsUI({ content }) {
         </div>
       </div>
       {methods && (
-        <motion.div
+        <mdiv
           className={styles.methods}
           ref={ref}
           variants={methodVariant}
@@ -55,7 +55,7 @@ function DonationMethodsUI({ content }) {
           {methods.map((method) => (
             <DonationMethods method={method} key={method.heading} />
           ))}
-        </motion.div>
+        </mdiv>
       )}
     </section>
   );

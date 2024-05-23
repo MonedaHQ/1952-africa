@@ -55,7 +55,7 @@ function Item({ item, index, navigateTo, btnLabel }) {
     item.description && truncateString(item.description, 64);
 
   return (
-    <motion.div
+    <div
       className={styles.item}
       ref={ref}
       custom={index}
@@ -84,7 +84,7 @@ function Item({ item, index, navigateTo, btnLabel }) {
           {btnLabel}
         </Button>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

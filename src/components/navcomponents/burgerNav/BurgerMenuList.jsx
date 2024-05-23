@@ -6,6 +6,7 @@ import BurgerNavLinks from './BurgerNavLinks';
 import styles from './styles/burgermenulist.module.css';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { useRouter } from 'next/router';
+import Button from '@/components/Button';
 
 function BurgerMenuList({ motion, isMenuOpen, closeMenu }) {
   const ref = useOutsideClick(closeMenu);
@@ -40,6 +41,15 @@ function BurgerMenuList({ motion, isMenuOpen, closeMenu }) {
           closeMenu={closeMenu}
         />
       ))}
+      <Button
+        variant="primary-reverse"
+        onClick={() => {
+          router.push('/donate');
+          closeMenu();
+        }}
+      >
+        Support us
+      </Button>
     </motion.nav>
   );
 }

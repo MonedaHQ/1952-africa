@@ -44,7 +44,7 @@ function Artist({ artist, index }) {
   const ref = useRef();
   const inView = useInView(ref, { once: true });
   return (
-    <motion.div
+    <div
       className={styles.artist}
       onClick={() => router.push(`/artists/${artist.id}`)}
       custom={index}
@@ -68,7 +68,7 @@ function Artist({ artist, index }) {
         </h5>
         <p>{artist.medium}</p>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

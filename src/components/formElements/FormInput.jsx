@@ -30,6 +30,7 @@ function FormInput({
           })}
           disabled={disabled}
           className={styles.textarea}
+          required={required}
         />
         {errors[id] && <p className={styles.warning}>{errors[id].message}</p>}
       </fieldset>
@@ -41,6 +42,7 @@ function FormInput({
       if (onChange) {
         selectProps = {
           defaultValue,
+          required,
           onChange,
           disabled,
           className: styles.select,
@@ -91,6 +93,7 @@ function FormInput({
             required: required ? 'This field is required' : false,
           })}
           disabled={disabled}
+          required={required}
         />
         {errors[id] && <p className={styles.warning}>{errors[id].message}</p>}
       </fieldset>
@@ -117,6 +120,7 @@ function FormInput({
           })}
           disabled={disabled}
           className={styles.input}
+          required={required}
         />
         {errors[id] && <p className={styles.warning}>{errors[id].message}</p>}
       </fieldset>
@@ -139,6 +143,7 @@ function FormInput({
         })}
         disabled={disabled}
         className={styles.input}
+        required={required}
       />
       {errors[id] && <p className={styles.warning}>{errors[id].message}</p>}
     </fieldset>

@@ -10,7 +10,7 @@ function FormContainer({ handleSubmit, onSubmit, padding, children }) {
     visible: { opacity: 1, scale: 1, transition: { delay: 0.1 } },
   };
   return (
-    <motion.form
+    <mform
       className={`${styles.form} ${padding ? styles.padded : ''}`}
       variants={tableVariants}
       ref={ref}
@@ -19,7 +19,7 @@ function FormContainer({ handleSubmit, onSubmit, padding, children }) {
       onSubmit={handleSubmit(onSubmit)}
     >
       {children}
-    </motion.form>
+    </mform>
   );
 }
 

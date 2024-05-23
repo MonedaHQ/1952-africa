@@ -20,7 +20,7 @@ function Raffle() {
 
   return (
     <Section>
-      <motion.main
+      <mmain
         className={styles.raffleSection}
         ref={inViewRef}
         variants={scaleUpSlow}
@@ -34,7 +34,7 @@ function Raffle() {
           totalTickets={total_tickets}
         />
         <RaffleDetails endDate={end_date} photo={photo} />
-      </motion.main>
+      </mmain>
     </Section>
   );
 }
