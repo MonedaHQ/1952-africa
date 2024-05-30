@@ -35,7 +35,7 @@ export const contactInfo = {
         icon: <PiFacebookLogo />,
       },
       {
-        link: 'https://www.youtube.com/@AFRICA-bt5sm',
+        link: 'https://www.youtube.com/channel/UC-ViYDlu6zbbxIDRSW5_GZA',
         icon: <PiYoutubeLogoThin />,
       },
       { link: 'https://twitter.com/1952Africa', icon: <RiTwitterXLine /> },
