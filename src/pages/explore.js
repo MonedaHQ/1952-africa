@@ -34,7 +34,7 @@ function ExploreContent() {
     { label: 'Explore our Programs', path: '/programs' },
     { label: 'Our Events', path: '/events' },
     { label: 'Disover our Artists', path: '/artists' },
-    { label: 'Visit our Gallery', path: '/Gallery' },
+    { label: 'Visit our Gallery', path: '/gallery' },
     { label: 'Learn more About us', path: '/about' },
     { label: 'The 1952 Africa Raffle', path: '/raffle' },
   ];
