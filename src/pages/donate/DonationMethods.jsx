@@ -118,6 +118,7 @@ function DonationMethods() {
       for_raffle: false,
     };
     const resData = await donate(newData);
+    console.log(newData);
 
     const { data: response } = resData;
 
