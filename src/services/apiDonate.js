@@ -1,15 +1,12 @@
 export async function donate(data) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_DONATION_URL}/donation`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_1952_API}/donation`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
 
     if (res.ok) {
       return await res.json();

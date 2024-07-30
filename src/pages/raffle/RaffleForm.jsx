@@ -83,7 +83,7 @@ function RaffleForm() {
               type="number"
               id="phone_number"
               label="Phone number (optional)"
-              placeholder="080123456789"
+              placeholder="08012345678"
               formActions={formActions}
               required={false}
             />

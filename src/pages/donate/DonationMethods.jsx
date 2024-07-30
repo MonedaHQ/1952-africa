@@ -212,7 +212,7 @@ function FinancialDonation({ formActions, isNavigating }) {
           type="number"
           id="phone_number"
           label="Phone number (optional)"
-          placeholder="080123456789"
+          placeholder="08012345678"
           formActions={formActions}
           required={false}
         />
@@ -222,8 +222,8 @@ function FinancialDonation({ formActions, isNavigating }) {
           label="Currency"
           formActions={formActions}
         >
-          <option value="">Please select...</option>
-          <option value="USD">US Dollars</option>
+          {/* <option value="">Please select...</option>
+          <option value="USD">US Dollars</option> */}
           <option value="NGN">Nigerian Naira</option>
         </FormInput>
         <FormInput
