@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 
 function RaffleForm() {
-  const [currency, setCurrency] = useState('USD');
+  const [currency, setCurrency] = useState('NGN');
   const [amount, setAmount] = useState('');
 
   const { register, formState, handleSubmit, setValue } = useForm();
@@ -44,8 +44,9 @@ function RaffleForm() {
 
     const { data: response } = resData;
 
-    const { link } = response;
-    window.location.href = link;
+    const { authorization_url } = response;
+
+    window.location.href = authorization_url;
   }
 
   return (
@@ -93,7 +94,7 @@ function RaffleForm() {
               onChange={(e) => setCurrency(e.target.value)}
               formActions={formActions}
             >
-              <option value="USD">US Dollars</option>
+              {/* <option value="USD">US Dollars</option> */}
               <option value="NGN">Nigerian Naira</option>
             </FormInput>
             <FormInput

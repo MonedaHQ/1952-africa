@@ -118,12 +118,11 @@ function DonationMethods() {
       for_raffle: false,
     };
     const resData = await donate(newData);
-    console.log(newData);
 
     const { data: response } = resData;
 
-    const { link } = response;
-    window.location.href = link;
+    const { authorization_url } = response;
+    window.location.href = authorization_url;
   }
 
   return (

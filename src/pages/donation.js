@@ -7,15 +7,15 @@ import Loader from '@/components/Loader';
 
 function Donation() {
   const router = useRouter();
-  const { status } = router.query;
+  const { trxref, reference } = router.query;
 
-  if (!status) return <Loader />;
+  if (!trxref && !reference) return <Loader />;
 
   return (
     <>
-      <MetaTags title={`Payment ${status} - 1952 Africa`} description="" />
+      <MetaTags title={`Payment successful - 1952 Africa`} description="" />
       <section className={styles.section}>
-        <Status status={status} />
+        <Status status="successful" />
       </section>
     </>
   );
