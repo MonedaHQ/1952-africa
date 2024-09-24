@@ -108,19 +108,19 @@ h6 {
 }
 
 p {
-  font-weight: 200;
+  font-weight: 300;
 }
 
 p strong {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 @media (max-width: 87.5em) {
   :root {
-    --font-size-h1: 4.2rem;
+    --font-size-h1: 3.8rem;
     --font-size-h2: 3.4rem;
     --font-size-h3: 3.2rem;
-    --font-size-h4: 2.24em;
+    --font-size-h4: 2.2rem;
     --font-size-h5: 1.8rem;
     --font-size-h6: 1.6rem;
 

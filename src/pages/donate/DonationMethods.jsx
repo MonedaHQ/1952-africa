@@ -55,59 +55,49 @@ function DonationMethods() {
   let form;
 
   if (!method) {
-    form = (
-      <NothingSelected
-        icon={<HiOutlineHandRaised />}
-        paragraph="Please select a donation method to continue"
-      />
+    // form = (
+    //   <NothingSelected
+    //     icon={<HiOutlineHandRaised />}
+    //     paragraph="Please select a donation method to continue"
+    //   />
+    // );
+    router.push(
+      { pathname: router.pathname, query: { method: 'corporate' } },
+      undefined,
+      { scroll: false }
     );
   } else if (method) {
-    if (method === 'financial') {
+    if (method === 'corporate') {
       form = (
         <FinancialDonation
           formActions={formActions}
           isNavigating={isNavigating}
         />
       );
-    } else if (method === 'items') {
-      form = (
-        <ItemDonation formActions={formActions} isNavigating={isNavigating} />
-      );
-    } else if (method === 'partner') {
-      if (upcomingEvents.length < 1) {
-        form = (
-          <NothingSelected
-            icon={<HiOutlineMinusCircle />}
-            paragraph="There are currently no events available for partnership"
-          />
-        );
-      } else {
-        form = (
-          <Partner
-            formActions={formActions}
-            isNavigating={isNavigating}
-            upcomingEvents={upcomingEvents}
-          />
-        );
-      }
     }
+    // else if (method === 'individual') {
+    //   form = (
+    //     <ItemDonation formActions={formActions} isNavigating={isNavigating} />
+    //   );
+    // }
   }
 
   async function onSubmit(data) {
     setIsNavigating(true);
-    if (method === 'financial') {
-      await financialDonation(data);
-    } else if (method === 'items') {
-      submitForm(
-        { data, subject: 'Item Donation Request' },
-        { onSuccess: () => router.push('/') }
-      );
-    } else if (method === 'partner') {
-      submitForm(
-        { data, subject: 'Partnership Request' },
-        { onSuccess: () => router.push('/') }
-      );
-    }
+    await financialDonation(data);
+    // if (method === 'corporate') {
+    //   await financialDonation(data);
+    // } else if (method === 'items') {
+    //   submitForm(
+    //     { data, subject: 'Item Donation Request' },
+    //     { onSuccess: () => router.push('/') }
+    //   );
+    // } else if (method === 'partner') {
+    //   submitForm(
+    //     { data, subject: 'Partnership Request' },
+    //     { onSuccess: () => router.push('/') }
+    //   );
+    // }
   }
 
   async function financialDonation(data) {
@@ -115,8 +105,11 @@ function DonationMethods() {
       ...data,
       amount: +data.amount,
       currency: data.currency === undefined ? 'NGN' : data.currency,
+      // pledge_to: data.pledge_to === '' ? 'event' : data.pledge_to,
       for_raffle: false,
     };
+
+    console.log(newData);
     const resData = await donate(newData);
 
     const { data: response } = resData;
@@ -144,7 +137,7 @@ function DonationMethods() {
 function ChooseMethod({ reset }) {
   const router = useRouter();
 
-  const donationMethods = ['financial', 'items', 'partner'];
+  const donationMethods = ['corporate'];
 
   function handleQueryParams(value) {
     reset();
@@ -166,7 +159,7 @@ function ChooseMethod({ reset }) {
               router.query.method === method ? styles.active : ''
             }`}
           >
-            {capitalizeFirstLetter(method)}
+            {capitalizeFirstLetter(method)} Pledge
           </button>
         ))}
       </div>
@@ -185,29 +178,40 @@ function NothingSelected({ icon, paragraph }) {
 
 function FinancialDonation({ formActions, isNavigating }) {
   return (
-    <FormBody title="Make a financial donation" disabled={isNavigating}>
+    <FormBody
+      title="Support the Future of African Artists"
+      disabled={isNavigating}
+    >
       <>
         <FormInput
           type="text"
-          id="first_name"
-          label="First name"
-          placeholder="John"
-          formActions={formActions}
-        />
-        <FormInput
-          type="text"
-          id="last_name"
-          label="Last name"
-          placeholder="Doe"
+          id="organization"
+          label="Organization"
+          placeholder=""
           formActions={formActions}
         />
         <FormInput
           type="email"
           id="email"
           label="Email"
-          placeholder="j.doe@example.com"
+          placeholder=""
           formActions={formActions}
         />
+        <FormInput
+          type="text"
+          id="first_name"
+          label="First name"
+          placeholder=""
+          formActions={formActions}
+        />
+        <FormInput
+          type="text"
+          id="last_name"
+          label="Last name"
+          placeholder=""
+          formActions={formActions}
+        />
+
         <FormInput
           type="number"
           id="phone_number"
@@ -222,10 +226,11 @@ function FinancialDonation({ formActions, isNavigating }) {
           label="Currency"
           formActions={formActions}
         >
-          {/* <option value="">Please select...</option>
-          <option value="USD">US Dollars</option> */}
+          <option value="">Please select...</option>
+          <option value="USD">US Dollars</option>
           <option value="NGN">Nigerian Naira</option>
         </FormInput>
+
         <FormInput
           type="number"
           id="amount"
@@ -233,6 +238,16 @@ function FinancialDonation({ formActions, isNavigating }) {
           placeholder=""
           formActions={formActions}
         />
+        <FormInput
+          type="select"
+          id="pledge_to"
+          label="Donate towards.."
+          formActions={formActions}
+        >
+          <option value="">Please select...</option>
+          <option value="event">Event</option>
+          <option value="prize">Prize</option>
+        </FormInput>
       </>
     </FormBody>
   );

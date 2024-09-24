@@ -43,7 +43,7 @@ function Works({ works }) {
               className={styles.image}
             />
           </div>{' '}
-          <h4>{work.title}</h4>
+          <h5>{work.title}</h5>
           <div>
             <p>{work.medium}</p>
             <p>{work.canvas_size}</p>

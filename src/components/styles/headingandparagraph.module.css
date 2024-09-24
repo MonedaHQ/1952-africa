@@ -1,3 +1,8 @@
+.contentContainer {
+  display: grid;
+  row-gap: 1.4rem;
+}
+
 .heading {
   font-size: 3.8rem;
 }

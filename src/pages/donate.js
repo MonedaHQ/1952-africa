@@ -24,7 +24,7 @@ function Donate() {
       <Bands />
       <DonateContent />
       <DonationMethods />
-      <SupportArtsAccelerator />
+      {/* <SupportArtsAccelerator /> */}
       <Bands />
       <Footer />
     </>
