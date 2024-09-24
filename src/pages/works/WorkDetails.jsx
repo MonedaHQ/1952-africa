@@ -16,7 +16,7 @@ function WorkDetails({ work, exhibition }) {
         <div className={styles.container}>
           <div className={styles.innerContainer}>
             <div className={styles.heading}>
-              <h3>Work Details</h3>
+              <h5>Work Details</h5>
               <p
                 className={`${styles.available} ${
                   work.is_available ? styles.green : styles.fail
@@ -35,13 +35,13 @@ function WorkDetails({ work, exhibition }) {
             </div>
             <ul className={styles.content}>
               <li className={styles.list}>
-                <h3>Size:</h3> <p>{work.canvas_size}</p>
+                <h5>Size:</h5> <p>{work.canvas_size}</p>
               </li>
               <li className={styles.list}>
-                <h3>Medium:</h3> <p>{work.medium}</p>
+                <h5>Medium:</h5> <p>{work.medium}</p>
               </li>
               <li className={styles.list}>
-                <h3>Exhibitied at:</h3>{' '}
+                <h5>Exhibitied at:</h5>{' '}
                 <Button
                   variant="link-light"
                   onClick={() => router.push(`/gallery/${exhibition.id}`)}
@@ -50,7 +50,7 @@ function WorkDetails({ work, exhibition }) {
                 </Button>
               </li>
               <li className={styles.list}>
-                <h3>Valued at:</h3>{' '}
+                <h5>Valued at:</h5>{' '}
                 <p>
                   {work.value} {work.value_currency}
                 </p>

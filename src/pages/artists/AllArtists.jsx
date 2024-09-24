@@ -39,9 +39,9 @@ function Artist({ artist }) {
           />
         </div>
         <div className={styles.artistInfo}>
-          <h3>
+          <h5>
             {artist.first_name} {artist.last_name}
-          </h3>
+          </h5>
           <p>{artist.medium}</p>
         </div>
       </div>

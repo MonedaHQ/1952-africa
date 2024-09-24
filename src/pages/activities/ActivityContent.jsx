@@ -15,7 +15,8 @@ function ActivityContent({ activity, artists }) {
       <div className={styles.contentContainer}>
         <div>
           <h3>Description:</h3>
-          <p>{activity.description}</p>
+          <div dangerouslySetInnerHTML={{ __html: activity.description }} />
+          {/* <p>{activity.description}</p> */}
         </div>
         <div className={styles.artistBox}>
           <Artists artists={artists} />
