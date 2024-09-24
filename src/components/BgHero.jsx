@@ -5,25 +5,10 @@ import ImageSlider from './ImageSlider';
 function BgHero({ children, slideShow }) {
   if (!slideShow) return;
 
-  // const image = [
-  //   '/images/slideshow/a-smile-from-a-stranger.jpg',
-  //   '/images/slideshow/almost-home.jpg',
-  //   '/images/slideshow/dewdrops-of-emotions.jpg',
-  // ];
-
-  const images = [
-    '/images/slideshow/dewdrops-of-emotions.jpg',
-    '/images/slideshow/father-nature.JPG',
-    '/images/slideshow/in-retrospect.JPG',
-    '/images/slideshow/oduduwas-descent.JPG',
-    '/images/slideshow/reflecting-ourselves.jpg',
-    '/images/slideshow/scar.JPG',
-    '/images/slideshow/torn-melodies.jpg',
-  ];
   return (
     <section className={styles.heroSection}>
       <div className={styles.backgroundImgContainer}>
-        <ImageSlider imageArray={images} />
+        <ImageSlider imageArray={slideShow} />
       </div>
       <div className={styles.heroContent}>
         <div className={styles.logoContainer}>

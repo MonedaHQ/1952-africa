@@ -23,11 +23,11 @@ export default function Home() {
       />
       <Navigation scrollPosition={scrollPosition} darkHero={true} bg={false} />
       <BurgerNavigation />
-      <HeroSection motion={motion} />
+      <HeroSection />
       <Bands />
       <HeroAbout />
       <Raffle />
-      <Support />
+      {/* <Support /> */}
       <Bands />
       <Footer />
     </>

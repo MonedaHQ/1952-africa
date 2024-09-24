@@ -42,7 +42,13 @@ function Exhibition() {
     [id, page]
   );
 
-  if (!isRendered || !currentExhibition || !currentWorks) return <Loader />;
+  if (!isRendered || !currentExhibition || !currentWorks)
+    return (
+      <Loader
+        title="Exhibitions - 1952 Africa"
+        description="Explore our amazing collections of African art"
+      />
+    );
 
   return (
     <>

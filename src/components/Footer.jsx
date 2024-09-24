@@ -29,7 +29,7 @@ function Footer({ quickLinks = homeLinks, data = footerLinks }) {
             <FooterLinks link={link} key={link.heading} />
           ))}
           <div className={styles.contactBox}>
-            <h3>{contactInfo.heading}</h3>
+            <h4>{contactInfo.heading}</h4>
             <ul className={styles.contactLinks}>
               <li className={styles.contactLink}>
                 Email us at
@@ -61,7 +61,7 @@ function Footer({ quickLinks = homeLinks, data = footerLinks }) {
                 </li>
               )}
               <div>
-                <h3>Follow us on Social Media</h3>
+                <h4>Follow us on Social Media</h4>
                 <div className={styles.socialIcons}>
                   {contactInfo.data.socials.map((link) => (
                     <Button
@@ -94,7 +94,7 @@ function FooterLinks({ link }) {
   const { handleScrollTo } = useSmoothScroll();
   return (
     <div className={styles.linkBlock}>
-      <h3>{heading}</h3>
+      <h4>{heading}</h4>
       <ul className={styles.linkList}>
         {links.map((link, index) => (
           <li key={heading + index} className={styles.link}>

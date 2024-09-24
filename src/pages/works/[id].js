@@ -47,7 +47,12 @@ function Work() {
   );
 
   if (!isRendered || !currentWork || !currentArtist || !currentExhibition)
-    return <Loader />;
+    return (
+      <Loader
+        title="Our Works - 1952 Africa"
+        description="Discover our amazing collection of African Art"
+      />
+    );
 
   return (
     <>

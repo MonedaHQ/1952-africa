@@ -1,18 +1,18 @@
-import { useProgram } from '@/components/features/programs/useProgram';
-import { useActivities } from '@/components/features/programs/useActivities';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+
+import { artistsWorkshop } from '@/data/artistWorkshop';
+import { getProgram } from '@/services/apiPrograms';
+import { scrollOffset } from '@/utils/config';
+
 import MetaTags from '@/components/head';
 import BurgerNavigation from '@/components/navcomponents/burgerNav/BurgerNavigation';
 import Navigation from '@/components/navcomponents/mainNav/Navigation';
 import useScrollPosition from '@/hooks/useScrollPosition';
-import { scrollOffset } from '@/utils/config';
-import { useRouter } from 'next/router';
 import HeroSlider from '@/components/HeroSlider';
-import { artistsWorkshop } from '@/data/artistWorkshop';
 import Bands from '@/components/Bands';
 import HeadingAndParagraph from '@/components/HeadingAndParagraph';
 import Activities from './Activities';
-import { useEffect, useState } from 'react';
-import { getProgram } from '@/services/apiPrograms';
 import Footer from '@/components/Footer';
 
 function Program() {

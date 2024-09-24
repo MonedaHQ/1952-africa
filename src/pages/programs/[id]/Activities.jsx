@@ -6,7 +6,13 @@ import { useActivities } from '@/components/features/programs/useActivities';
 function Activities({ programId }) {
   const { activities, isLoading } = useActivities({ program_id: programId });
 
-  if (isLoading) return <Loader />;
+  if (isLoading)
+    return (
+      <Loader
+        title="1952 Africa Activities"
+        description="1952 Africa Activities"
+      />
+    );
 
   if (!activities.data.length) return <Empty resourceName="activities" />;
 

@@ -5,12 +5,12 @@ import { slideUp } from '@/utils/anim';
 import { useRef } from 'react';
 import MetaTags from './head';
 
-function Loader() {
+function Loader({ title = '', description = '' }) {
   const ref = useRef();
   const inView = useInView(ref, { once: true });
   return (
     <>
-      <MetaTags title="Loading..." description="Loading..." />
+      <MetaTags title={title} description={description} />
       <section className={styles.section}>
         <motion.div
           className={styles.loaderContainer}

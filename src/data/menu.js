@@ -14,19 +14,17 @@ export const homeMenuLinks = [
       { path: '/events', label: 'Events' },
     ],
   },
-  // {
-  //   path: null,
-  //   label: 'Blog',
-  //   icon: null,
-  //   icon2: null,
-  //   dropdown: null,
-  // },
   {
-    path: '/about',
+    path: null,
     label: 'About',
-    icon: null,
-    icon2: null,
-    dropdown: null,
+    action: 'onMouseEnter',
+    icon: <HiMiniChevronDown />,
+    icon2: <HiMiniChevronUp />,
+    dropdown: [
+      { path: '/about', label: 'About us' },
+      { path: '/team', label: 'Our People' },
+      { path: '/1952-house', label: '1952 House' },
+    ],
   },
 
   {

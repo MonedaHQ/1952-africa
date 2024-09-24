@@ -47,7 +47,12 @@ function Artist() {
   );
 
   if (!isRendered || !currentArtist || !currentActivity || !currentWorks)
-    return <Loader />;
+    return (
+      <Loader
+        title="Our Artists - 1952 Africa"
+        description="Discover our amazing talents"
+      />
+    );
 
   const artistName = `${currentArtist?.first_name || 'Loading'} ${
     currentArtist?.last_name || '...'
