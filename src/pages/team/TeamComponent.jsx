@@ -26,6 +26,7 @@ function Heading({ heading, paragraph }) {
 }
 
 function TeamMembers({ teamArray }) {
+  if (!teamArray) return;
   return (
     <div className={styles.membersContainer}>
       {teamArray.map((member) => (
