@@ -75,7 +75,11 @@ function Item({ item, index, navigateTo, btnLabel }) {
       <div className={styles.itemContent}>
         <div className={styles.content}>
           <h4 className={styles.itemTitle}>{item.title}</h4>
-          <p>{truncatedDescription || item.medium} </p>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: truncatedDescription || item.medium,
+            }}
+          />
         </div>
         <Button
           variant="primary"

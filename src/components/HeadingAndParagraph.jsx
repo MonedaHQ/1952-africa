@@ -8,7 +8,7 @@ function HeadingAndParagraph({ content }) {
       {content.map((item) => (
         <Section key={item.paragraph}>
           {item.heading && <h3 className={styles.heading}>{item.heading}</h3>}
-          <p className={styles.paragraph}>{item.paragraph}</p>
+          <div dangerouslySetInnerHTML={{ __html: item.paragraph }} />
         </Section>
       ))}
     </>
