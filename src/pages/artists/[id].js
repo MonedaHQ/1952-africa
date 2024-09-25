@@ -33,8 +33,11 @@ function Artist() {
       async function fetchArtist(id) {
         const artist = await getArtist(id);
         setCurrentArtist(artist);
-        const activity = await getActivity(artist.activity_id);
-        setCurrentActivity(activity);
+
+        if (artist.activity_id) {
+          const activity = await getActivity(artist.activity_id);
+          setCurrentActivity(activity);
+        }
         const works = await getSpecificWorks({ artist_id: id, page });
         setCurrentWorks(works);
       }
@@ -46,7 +49,7 @@ function Artist() {
     [id, page]
   );
 
-  if (!isRendered || !currentArtist || !currentActivity || !currentWorks)
+  if (!isRendered || !currentArtist)
     return (
       <Loader
         title="Our Artists - 1952 Africa"

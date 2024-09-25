@@ -24,7 +24,7 @@ function ArtistWorks({ works }) {
 function Works({ works }) {
   const router = useRouter();
 
-  if (!works) return <Loader />;
+  if (!works) return;
 
   return (
     <div className={styles.works}>

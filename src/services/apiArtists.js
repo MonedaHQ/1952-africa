@@ -1,11 +1,17 @@
 import { BASE_URL, PAGE_SIZE } from '@/utils/config';
 import { addQueryParam } from '@/utils/helpers';
 
-export async function getSpecificArtists({ program_id, activity_id, search }) {
+export async function getSpecificArtists({
+  program_id,
+  activity_id,
+  search,
+  page,
+}) {
   let url = `${BASE_URL}/artist`;
 
   url = addQueryParam(url, 'program_id', program_id);
   url = addQueryParam(url, 'activity_id', activity_id);
+  url = addQueryParam(url, 'page', page);
   url = addQueryParam(url, 's', search);
   url = addQueryParam(url, 'limit', PAGE_SIZE);
 

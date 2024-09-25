@@ -13,7 +13,7 @@ import Image from 'next/image';
 import Loader from '@/components/Loader';
 
 function ArtistMain({ artist, activity, works }) {
-  if (!activity || !artist || !works) return <Loader />;
+  if (!artist) return <Loader />;
   const youtubeEmbedLink = convertToEmbedLink(artist?.video_url) || '';
   return (
     <Section>
@@ -42,15 +42,17 @@ function ArtistDetails({ artist, activity, works }) {
         </h3>
       </div>
       <ul className={styles.artistMetrics}>
-        <li>
-          <PiClipboardTextLight />{' '}
-          <Button
-            variant="link-light"
-            onClick={() => router.push(`/activities/${activity.id}`)}
-          >
-            {activity.title}
-          </Button>
-        </li>
+        {activity && (
+          <li>
+            <PiClipboardTextLight />{' '}
+            <Button
+              variant="link-light"
+              onClick={() => router.push(`/activities/${activity.id}`)}
+            >
+              {activity.title}
+            </Button>
+          </li>
+        )}
 
         <li>
           <PiInstagramLogoLight />{' '}
