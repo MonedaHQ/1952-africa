@@ -105,7 +105,7 @@ function DonationMethods() {
       ...data,
       amount: +data.amount,
       currency: data.currency === undefined ? 'NGN' : data.currency,
-      // pledge_to: data.pledge_to === '' ? 'event' : data.pledge_to,
+      pledge_type: 'coperate',
       for_raffle: false,
     };
 
@@ -185,7 +185,7 @@ function FinancialDonation({ formActions, isNavigating }) {
       <>
         <FormInput
           type="text"
-          id="organization"
+          id="company"
           label="Organization"
           placeholder=""
           formActions={formActions}
@@ -240,7 +240,7 @@ function FinancialDonation({ formActions, isNavigating }) {
         />
         <FormInput
           type="select"
-          id="pledge_to"
+          id="support_type"
           label="Donate towards.."
           formActions={formActions}
         >
