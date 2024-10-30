@@ -39,6 +39,8 @@ function EventsList() {
   if (!isRendered || !runningEvents || !upcomingEvents || !allEvents)
     return <Loader />;
 
+  console.log(upcomingEvents);
+
   return (
     <Section>
       <main className={styles.main}>

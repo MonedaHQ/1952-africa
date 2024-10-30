@@ -56,6 +56,9 @@
 .artistImageAndTitle img {
   border-radius: 500em;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+  object-fit: cover;
+  object-position: center;
 }
 
 @media only screen and (max-width: 95em) {
