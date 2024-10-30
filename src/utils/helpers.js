@@ -45,16 +45,33 @@ export function getCurrentDateString() {
   const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
   const dateString = currentDate
     .toLocaleDateString('en-US', options)
-    .replace(/\//g, '-');
+    .replace(/\//g, '/');
   return dateString;
 }
 
 export function simplifyDateString(date) {
   const currentDate = new Date(date);
-  const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-  const dateString = currentDate
-    .toLocaleDateString('en-US', options)
-    .replace(/\//g, '-');
+  const day = new Intl.DateTimeFormat('en-GB', { weekday: 'long' }).format(
+    currentDate
+  );
+  const dayOfMonth = new Intl.DateTimeFormat('en-GB', {
+    day: 'numeric',
+  }).format(currentDate);
+  const month = new Intl.DateTimeFormat('en-GB', { month: 'long' }).format(
+    currentDate
+  );
+  const year = currentDate.getFullYear();
 
-  return dateString;
+  const dayWithSuffix = `${dayOfMonth}${getOrdinalSuffix(dayOfMonth)}`;
+
+  return `${day}, ${dayWithSuffix} of ${month} ${year}`;
+}
+
+function getOrdinalSuffix(day) {
+  const lastDigit = day % 10;
+  if (day >= 11 && day <= 13) return 'th';
+  if (lastDigit === 1) return 'st';
+  if (lastDigit === 2) return 'nd';
+  if (lastDigit === 3) return 'rd';
+  return 'th';
 }

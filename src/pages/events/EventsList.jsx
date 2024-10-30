@@ -98,16 +98,13 @@ function Event({ event, couldSponsor }) {
       </div>
       <div className={styles.details}>
         <h4>{event.title}</h4>
-        <p>{event.description}</p>
+        <p dangerouslySetInnerHTML={{ __html: event.description }} />
         <p>
           Starting {simplifyDateString(event.start_date)} till{' '}
           {simplifyDateString(event.end_date)}
         </p>
         {event.open_to_sponsorship && couldSponsor && (
-          <Button
-            variant="primary"
-            onClick={() => router.push('/donate?method=partner')}
-          >
+          <Button variant="primary" onClick={() => router.push('/donate')}>
             Partner
           </Button>
         )}

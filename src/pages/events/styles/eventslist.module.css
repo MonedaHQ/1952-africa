@@ -12,9 +12,14 @@
 
 .event {
   display: grid;
-  grid-template-columns: max-content 1fr;
+
   align-items: center;
+  row-gap: 3rem;
   column-gap: 1.6rem;
+}
+.details {
+  border-top: 1px solid black;
+  padding: 3rem;
 }
 
 .imageContainer img {
@@ -37,9 +42,22 @@
   justify-items: start;
 }
 
+.details p {
+  text-align: justify;
+}
+
+.details p li {
+  margin-left: 3rem;
+  margin-top: 1.5rem;
+}
+
 @media only screen and (max-width: 37.5em) {
   .event {
     grid-template-columns: 1fr;
+  }
+
+  .details {
+    padding-left: 1rem;
   }
 }
 
