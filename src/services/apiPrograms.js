@@ -80,6 +80,8 @@ export async function getActivities({
     url = addQueryParam(url, sortParam, sortMethod.value);
   }
 
+  url = url + '&sort=title&sortOrder=DESC';
+
   try {
     const response = await fetch(`${url}`, {
       method: 'GET',
