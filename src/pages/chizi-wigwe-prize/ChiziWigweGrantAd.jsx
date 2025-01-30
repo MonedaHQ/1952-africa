@@ -31,10 +31,10 @@ function Description() {
               <br />
               The Chizi Wigwe Prize is a $15,000 award granted to an exceptional
               artist whose work embodies the spirit of African Futurism and
-              aligns with the theme "Africa in 2100." This initiative reflects
-              the Foundation's commitment to fostering a dynamic and inclusive
-              creative landscape where African artists can thrive and contribute
-              to global conversations.
+              aligns with the theme &quot;Africa in 2100.&quot; This initiative
+              reflects the Foundation&lsquo;s commitment to fostering a dynamic
+              and inclusive creative landscape where African artists can thrive
+              and contribute to global conversations.
             </p>
           </div>
           <div className={styles.cta}>
