@@ -12,9 +12,9 @@ export const footerLinks = [
   {
     heading: 'Make a donation',
     links: [
-      { label: 'Financial Donation', link: '/donate?method=financial' },
-      { label: 'Donate items', link: '/donate?method=items' },
-      { label: 'Partner with us', link: '/donate?method=partner' },
+      { label: 'Financial Donation', link: '/donate?method=corporate' },
+      // { label: 'Donate items', link: '/donate?method=items' },
+      // { label: 'Partner with us', link: '/donate?method=partner' },
     ],
   },
 ];
@@ -52,11 +52,11 @@ export const homeLinks = [
   {
     heading: 'Quick Links',
     links: [
+      { label: 'The Chizi Wigwe Prize', link: '/chizi-wigwe-prize' },
       { label: 'Programs', link: '/programs' },
       { label: 'Artists', link: '/artists' },
       { label: 'Gallery', link: '/gallery' },
       { label: 'Events', link: '/events' },
-      //   { label: 'Join the raffle!', link: 'raffle' },
     ],
   },
 ];

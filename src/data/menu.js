@@ -12,6 +12,7 @@ export const homeMenuLinks = [
       { path: '/artists', label: 'Artists' },
       { path: '/gallery', label: 'Gallery' },
       { path: '/events', label: 'Events' },
+      { path: '/chizi-wigwe-prize', label: 'The Chizi Wigwe Prize' },
     ],
   },
   {
