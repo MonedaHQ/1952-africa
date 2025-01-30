@@ -21,7 +21,7 @@ export const chizigrantdata = `<h1>Call for Applications: Chizi Wigwe Prize for 
 </ul>
 
 <h2>Submission Requirements</h2>
-<p>Interested artists are requested to submit the following materials through the online portal at <a href="http://www.1952africa.art" target="_blank">www.1952africa.art</a>:</p>
+<p>Interested artists are requested to submit the following materials and <a href="https://bit.ly/ChiziWigwePrizeforAfricanFuturism" target="_blank">fill this form</a>:</p>
 
 <ul>
     <li><strong>Project Proposal:</strong> A detailed outline of the proposed artistic project, demonstrating its relevance to African Futurism and the theme "Africa in 2100."</li>
