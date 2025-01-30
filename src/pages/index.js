@@ -11,6 +11,7 @@ import HeroAbout from './index/HeroAbout';
 import Raffle from '@/components/Raffle';
 import Support from '@/components/Support';
 import Footer from '@/components/Footer';
+import ChiziWigweGrantAd from './chizi-wigwe-prize/ChiziWigweGrantAd';
 
 export default function Home() {
   const scrollPosition = useScrollPosition(scrollOffset);
@@ -26,7 +27,8 @@ export default function Home() {
       <HeroSection />
       <Bands />
       <HeroAbout />
-      <Raffle />
+      <ChiziWigweGrantAd />
+      {/* <Raffle /> */}
       {/* <Support /> */}
       <Bands />
       <Footer />

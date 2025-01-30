@@ -1,0 +1,36 @@
+.main {
+  display: grid;
+  margin-top: 8rem;
+  row-gap: 3rem;
+}
+
+.imageContainer {
+  display: grid;
+  place-items: center;
+}
+
+.image {
+  width: 60%;
+  height: auto;
+}
+
+.content {
+  display: grid;
+  row-gap: 2rem;
+}
+
+.content ul {
+  margin-left: 3rem;
+}
+
+@media (max-width: 65em) {
+  .image {
+    width: 80%;
+  }
+}
+
+@media (max-width: 40em) {
+  .image {
+    width: 100%;
+  }
+}
