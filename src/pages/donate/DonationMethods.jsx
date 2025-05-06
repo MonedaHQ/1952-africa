@@ -242,11 +242,9 @@ function FinancialDonation({ formActions, isNavigating }) {
           formActions={formActions}
         >
           <option value="">Please select...</option>
-          <option value="egbuagu_foundation">Egbuagu Foundation</option>
-          <option value="arts_accelerator_program">
-            Arts Accelerator Program
-          </option>
-          <option value="chizi_wigwe_prize">Chizi Wigwe Prize</option>
+          <option value="event">Egbuagu Foundation</option>
+          <option value="prize">Arts Accelerator Program</option>
+          <option value="prize">Chizi Wigwe Prize</option>
         </FormInput>
       </>
     </FormBody>
