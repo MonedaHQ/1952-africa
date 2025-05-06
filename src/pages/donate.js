@@ -22,7 +22,7 @@ function Donate() {
       <BurgerNavigation />
       <SupportHero />
       <Bands />
-      <DonateContent />
+      {/* <DonateContent /> */}
       <DonationMethods />
       {/* <SupportArtsAccelerator /> */}
       <Bands />

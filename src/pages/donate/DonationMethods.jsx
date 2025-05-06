@@ -121,7 +121,7 @@ function DonationMethods() {
   return (
     <Section>
       <FormMain>
-        <ChooseMethod reset={reset} />
+        {/* <ChooseMethod reset={reset} /> */}
         <FormContainer
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
@@ -178,10 +178,7 @@ function NothingSelected({ icon, paragraph }) {
 
 function FinancialDonation({ formActions, isNavigating }) {
   return (
-    <FormBody
-      title="Support the Future of African Artists"
-      disabled={isNavigating}
-    >
+    <FormBody title="Please fill the form to donate" disabled={isNavigating}>
       <>
         <FormInput
           type="text"
@@ -245,8 +242,11 @@ function FinancialDonation({ formActions, isNavigating }) {
           formActions={formActions}
         >
           <option value="">Please select...</option>
-          <option value="event">Event</option>
-          <option value="prize">Prize</option>
+          <option value="egbuagu_foundation">Egbuagu Foundation</option>
+          <option value="arts_accelerator_program">
+            Arts Accelerator Program
+          </option>
+          <option value="chizi_wigwe_prize">Chizi Wigwe Prize</option>
         </FormInput>
       </>
     </FormBody>
