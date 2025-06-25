@@ -24,12 +24,12 @@ const teamMembers = {
   teamArray: [
     {
       imageData: { src: '/assets/team/ejike.jpg', alt: 'Ejike' },
-      name: 'Ejike Egbuagbe',
+      name: 'Ejike Egbuagu',
       paragraph:
         'Founder of 1952 Africa and a driving force behind the residency’s vision, Ejike Egbuagu’s leadership has been instrumental in creating a platform that amplifies African voices in the art world. With a deep passion for art and a commitment to cultural preservation, Ejike’s dedication to nurturing African talent continues to inspire our work. His vision for 1952 Africa goes beyond the residency—it’s about creating lasting impact, empowering artists, and redefining the narrative of African art on a global stage.',
     },
     {
-      imageData: { src: '/assets/team/ejike.jpg', alt: 'Ejike' },
+      imageData: { src: '/assets/team/akaego.jpeg', alt: 'Akaego' },
       name: 'Ego Okoye',
       paragraph:
         'A dedicated advocate for the arts, Ego Okoye brings her deep understanding of cultural dynamics and her commitment to supporting African talent to our board. Ego’s strategic insight and unwavering passion for promoting African art make her a vital force in guiding the residency’s growth and outreach.',
@@ -42,13 +42,13 @@ const boardMembers = {
   paragraph: null,
   teamArray: [
     {
-      imageData: { src: '/assets/team/ejike.jpg', alt: 'Ejike' },
+      imageData: { src: '/assets/team/akinbayo.jpeg', alt: 'Akinbayo' },
       name: 'Akinbayo Atere',
       paragraph:
         'Akinbayo Atere, a Finance & Business Advisory professional, brings a unique perspective to our Advisory Board. While his professional background is rooted in finance, Akinbayo’s role at 1952 Africa is driven by his passion for the arts and his commitment to supporting emerging African talent. His involvement goes beyond numbers; he provides thoughtful mentorship and strategic advice that enriches the residency’s creative environment.',
     },
     {
-      imageData: { src: '/assets/team/ejike.jpg', alt: 'Ejike' },
+      imageData: { src: '/assets/team/ugomah.jpg', alt: 'Ugomah' },
       name: 'Ugomah Ebilah',
       paragraph:
         'Ugomah Ebilah is a corporate finance professional turned creative entrepreneur, renowned for her dynamic taste-making and community-building efforts. Her experience bridges the worlds of finance and art, bringing a unique blend of business acumen and creative insight to our Advisory Board. Ugomah’s commitment to supporting artists and her ability to create meaningful connections within the art community make her a vital contributor to our mission.',
