@@ -12,6 +12,7 @@ import Raffle from '@/components/Raffle';
 import Support from '@/components/Support';
 import Footer from '@/components/Footer';
 import ChiziWigweGrantAd from './chizi-wigwe-prize/ChiziWigweGrantAd';
+import Modal from '@/components/Modal';
 
 export default function Home() {
   const scrollPosition = useScrollPosition(scrollOffset);
@@ -24,6 +25,7 @@ export default function Home() {
       />
       <Navigation scrollPosition={scrollPosition} darkHero={true} bg={false} />
       <BurgerNavigation />
+      <Modal />
       <HeroSection />
       <Bands />
       <HeroAbout />

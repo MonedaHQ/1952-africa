@@ -14,6 +14,7 @@ import Bands from '@/components/Bands';
 import HeadingAndParagraph from '@/components/HeadingAndParagraph';
 import Activities from './Activities';
 import Footer from '@/components/Footer';
+import Modal from '@/components/Modal';
 
 function Program() {
   const router = useRouter();
@@ -49,6 +50,7 @@ function Program() {
       />
       <Navigation scrollPosition={scrollPosition} darkHero={false} />
       <BurgerNavigation />
+      <Modal />
       <HeroSlider
         array={artistsWorkshop}
         title={currentProgram?.title || 'Our Programs'}

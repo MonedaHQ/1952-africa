@@ -64,7 +64,7 @@ body {
 }
 
 a {
-  color: var(--color-green) !important;
+  /* color: var(--color-green) !important; */
 }
 
 ::selection {

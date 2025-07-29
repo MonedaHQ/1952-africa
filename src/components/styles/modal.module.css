@@ -1,0 +1,71 @@
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+
+  display: grid;
+  place-items: center;
+}
+
+.message {
+  width: 600px;
+  background-color: var(--color-white);
+  padding: 2rem 4rem;
+  border-radius: 2.2rem;
+
+  display: grid;
+  place-items: center;
+  row-gap: 2.8rem;
+}
+
+.message h3 {
+  max-width: 80%;
+  margin: auto;
+  line-height: 1;
+}
+
+.message img {
+  width: 80px;
+  height: auto;
+}
+
+.content {
+  text-align: center;
+
+  display: grid;
+  row-gap: 1.8rem;
+}
+
+.twoButtons {
+  display: flex;
+  gap: 3rem;
+}
+
+@media (max-width: 88em) {
+  .message {
+    width: 500px;
+  }
+}
+
+@media (max-width: 36.25em) {
+  .message {
+    width: 400px;
+  }
+}
+
+@media (max-width: 27em) {
+  .overlay {
+    padding: 2rem;
+  }
+  .message {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+
+  .message h3 {
+    font-size: 2.8rem;
+  }
+}
