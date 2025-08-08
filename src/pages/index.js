@@ -25,7 +25,7 @@ export default function Home() {
       />
       <Navigation scrollPosition={scrollPosition} darkHero={true} bg={false} />
       <BurgerNavigation />
-      <Modal />
+      {/* <Modal /> */}
       <HeroSection />
       <Bands />
       <HeroAbout />

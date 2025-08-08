@@ -50,7 +50,7 @@ function Program() {
       />
       <Navigation scrollPosition={scrollPosition} darkHero={false} />
       <BurgerNavigation />
-      <Modal />
+      {/* <Modal /> */}
       <HeroSlider
         array={artistsWorkshop}
         title={currentProgram?.title || 'Our Programs'}
