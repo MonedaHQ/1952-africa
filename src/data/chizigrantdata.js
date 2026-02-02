@@ -21,7 +21,7 @@ export const chizigrantdata = `<h1>Call for Applications: Chizi Wigwe Prize for 
 </ul>
 
 <h2>Submission Requirements</h2>
-<p>Interested artists are requested to submit the following materials and <a href="https://bit.ly/ChiziWigwePrizeforAfricanFuturism" target="_blank">fill this form</a>:</p>
+<p>Interested artists are requested to submit the following materials and <a href="https://forms.gle/gvEGJ6kNo1T4VzCT6" target="_blank">fill this form</a>:</p>
 
 <ul>
     <li><strong>Project Proposal:</strong> A detailed outline of the proposed artistic project, demonstrating its relevance to African Futurism and the theme "Africa in 2100."</li>
@@ -32,6 +32,6 @@ export const chizigrantdata = `<h1>Call for Applications: Chizi Wigwe Prize for 
 </ul>
 
 <h2>Deadline</h2>
-<p>The deadline for application submission is <strong>April 30th, 2025.</strong></p>
+<p>The deadline for application submission is <strong>March 31st, 2026.</strong></p>
 
 <p>For inquiries, please contact: <a href="mailto:info@1952africa.art">info@1952africa.art</a></p>`;
