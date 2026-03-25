@@ -32,6 +32,6 @@ export const chizigrantdata = `<h1>Call for Applications: Chizi Wigwe Prize for 
 </ul>
 
 <h2>Deadline</h2>
-<p>The deadline for application submission is <strong>March 31st, 2026.</strong></p>
+<p>The deadline for application submission is <strong>March 27th, 2026.</strong></p>
 
 <p>For inquiries, please contact: <a href="mailto:info@1952africa.art">info@1952africa.art</a></p>`;
