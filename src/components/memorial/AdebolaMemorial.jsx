@@ -178,6 +178,12 @@ function MemorialDonationForm() {
       });
 
       const { authorization_url } = resData.data;
+      window.localStorage.setItem(
+        'donationReturnContext',
+        JSON.stringify({
+          type: 'memorial',
+        }),
+      );
       window.location.href = authorization_url;
     } catch (error) {
       setIsNavigating(false);

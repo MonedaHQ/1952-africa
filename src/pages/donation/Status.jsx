@@ -8,7 +8,15 @@ import styles from './styles/donation.module.css';
 import Button from '@/components/Button';
 import { useState } from 'react';
 
-function Status({ status }) {
+function Status({
+  status,
+  title,
+  message,
+  buttonLabel = 'Back Home',
+  buttonHref = '/',
+  secondaryButtonLabel,
+  secondaryButtonHref,
+}) {
   const router = useRouter();
 
   const [isNavigating, setIsNavigating] = useState(false);
@@ -27,24 +35,36 @@ function Status({ status }) {
         >
           {isSuccess ? <PiCheckCircleFill /> : <PiInfoFill />}
         </div>
-        <h4>{isSuccess ? 'Successful' : 'Failed'}</h4>
+        <h4>{title || (isSuccess ? 'Successful' : 'Failed')}</h4>
         <p>
-          Your payment{' '}
-          {isSuccess ? 'was successful' : 'failed. Please try again'}
+          {message ||
+            `Your payment ${
+              isSuccess ? 'was successful' : 'failed. Please try again'
+            }`}
         </p>
       </div>
       <div className={styles.btnWrap}>
         {isNavigating && <Loader />}
         {!isNavigating && (
-          <Button
-            variant="primary"
-            onClick={() => {
-              setIsNavigating(true);
-              router.push('/');
-            }}
-          >
-            Back Home
-          </Button>
+          <>
+            <Button
+              variant="primary"
+              onClick={() => {
+                setIsNavigating(true);
+                router.push(buttonHref);
+              }}
+            >
+              {buttonLabel}
+            </Button>
+            {secondaryButtonHref && (
+              <Button
+                variant="primary-reverse"
+                href={secondaryButtonHref}
+              >
+                {secondaryButtonLabel}
+              </Button>
+            )}
+          </>
         )}
       </div>
     </motion.div>
