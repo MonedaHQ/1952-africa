@@ -8,11 +8,16 @@ export async function donate(data) {
       body: JSON.stringify(data),
     });
 
+    const responseData = await res.json();
+
     if (res.ok) {
-      return await res.json();
+      return responseData;
     } else {
-      console.log('Failed to donate');
-      throw new Error('Failed to donate');
+      const message = Array.isArray(responseData.message)
+        ? responseData.message.join(', ')
+        : responseData.message || 'Failed to donate';
+      console.log(message);
+      throw new Error(message);
     }
   } catch (error) {
     console.error('Error donating:', error);

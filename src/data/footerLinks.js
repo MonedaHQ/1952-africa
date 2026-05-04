@@ -13,7 +13,10 @@ export const footerLinks = [
     heading: 'Make a donation',
     links: [
       { label: 'Financial Donation', link: '/donate?method=corporate' },
-      // { label: 'Donate items', link: '/donate?method=items' },
+      {
+        label: 'Adebola Ewaoluwa Adesanya',
+        link: '/adebola-ewaoluwa-adesanya',
+      },
       // { label: 'Partner with us', link: '/donate?method=partner' },
     ],
   },

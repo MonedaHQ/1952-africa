@@ -2,7 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['bumblebee-dev-files.s3.amazonaws.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'bumblebee-dev-files.s3.amazonaws.com',
+      },
+    ],
     unoptimized: true,
   },
 };

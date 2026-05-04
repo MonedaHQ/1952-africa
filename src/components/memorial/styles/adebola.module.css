@@ -1,0 +1,262 @@
+.page {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(28rem, 0.9fr);
+  gap: 6rem;
+  align-items: center;
+  min-height: 68rem;
+  padding-top: 8rem;
+}
+
+.heroContent {
+  display: grid;
+  gap: 2rem;
+  max-width: 70rem;
+}
+
+.heroContent h1 {
+  max-width: 12ch;
+  line-height: 1;
+}
+
+.heroContent p {
+  max-width: 62rem;
+  font-size: var(--font-size-paragraph-big);
+}
+
+.years {
+  color: var(--color-wine);
+  font-size: var(--font-size-h2) !important;
+  line-height: 1;
+}
+
+.eyebrow {
+  color: var(--color-wine);
+  font-size: var(--font-size-caption);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.sourceLink {
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.4rem;
+}
+
+.sourceLink svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.imageFrame,
+.memorialMark {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-color: var(--color-light-grey);
+}
+
+.imageFrame {
+  display: grid;
+  gap: 1rem;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imageFrame figcaption,
+.photoCard figcaption {
+  font-size: var(--font-size-caption);
+}
+
+.memorialMark {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-black);
+  background:
+    linear-gradient(135deg, rgba(232, 211, 157, 0.45), rgba(28, 152, 140, 0.12)),
+    var(--color-light-grey);
+}
+
+.memorialMark span {
+  display: grid;
+  place-items: center;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34rem;
+  gap: 6rem;
+  align-items: start;
+}
+
+.story,
+.sidePanel,
+.gallery,
+.donationIntro {
+  display: grid;
+  gap: 2rem;
+}
+
+.story h2,
+.donationIntro h2 {
+  line-height: 1.1;
+}
+
+.story p {
+  max-width: 82rem;
+  font-size: var(--font-size-paragraph-big);
+}
+
+.story blockquote {
+  max-width: 82rem;
+  color: var(--color-wine);
+  font-size: var(--font-size-h3);
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.memorialFacts {
+  display: grid;
+  gap: 0.4rem;
+  margin-left: 2rem;
+  color: var(--color-wine);
+  font-size: var(--font-size-paragraph-big);
+  font-weight: 500;
+}
+
+.sidePanel {
+  border-left: 1px solid var(--color-black);
+  padding-left: 3rem;
+}
+
+.sidePanel h3 {
+  font-size: var(--font-size-h5);
+}
+
+.sidePanel a {
+  color: var(--color-wine);
+  width: fit-content;
+}
+
+.sectionHeading {
+  display: grid;
+  gap: 1rem;
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.photoCard {
+  display: grid;
+  gap: 1rem;
+}
+
+.photoImage {
+  width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: cover;
+}
+
+.donationIntro {
+  max-width: 78rem;
+}
+
+.donationIntro .eyebrow {
+  color: var(--color-gold);
+}
+
+.donationIntro p {
+  font-size: var(--font-size-paragraph-big);
+}
+
+.formError {
+  grid-column: 1 / -1;
+  color: var(--color-fail);
+}
+
+@media (max-width: 70em) {
+  .hero,
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .imageFrame,
+  .memorialMark {
+    max-width: 54rem;
+  }
+
+  .sidePanel {
+    border-left: none;
+    border-top: 1px solid var(--color-black);
+    padding: 3rem 0 0;
+  }
+}
+
+@media (max-width: 48em) {
+  .hero {
+    gap: 4rem;
+    padding-top: 6rem;
+  }
+
+  .photoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 32em) {
+  .heroContent p,
+  .story p,
+  .memorialFacts,
+  .donationIntro p {
+    font-size: var(--font-size-paragraph-regular);
+  }
+
+  .story blockquote {
+    font-size: var(--font-size-h4);
+  }
+
+  .photoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .memorialMark span {
+    width: 9rem;
+    height: 9rem;
+    font-size: 4.6rem;
+  }
+}
