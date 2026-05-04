@@ -93,7 +93,7 @@ function AdebolaMemorial() {
               original ForeverMissed memorial.
             </p>
             <a href={memorial.sourceUrl} target="_blank" rel="noreferrer">
-              Visit memorial
+              Leave a tribute
             </a>
           </aside>
         </div>
