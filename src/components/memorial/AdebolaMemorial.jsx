@@ -75,7 +75,7 @@ function AdebolaMemorial() {
       <Section>
         <main className={styles.hero}>
           <div className={styles.heroContent}>
-            <p className={styles.eyebrow}>In loving memory</p>
+            {/* <p className={styles.eyebrow}>In loving memory</p> */}
             <h1>{memorial.title}</h1>
             <p className={styles.subtitle}>{memorial.subtitle}</p>
             <p>{memorial.intro}</p>
