@@ -19,11 +19,12 @@ const memorial = {
   sourceUrl: 'https://www.forevermissed.com/adebola-ewaoluwa-adesanya/about', // Original memorial URL on ForeverMissed
   title: 'A Community of Love',
   subtitle: 'In Memory of Adebola Ewaoluwa Adesanya',
-  intro: 'A coordinated expression of love and support for his family.',
+  intro:
+    'A collective expression of love and support for his wife, children, and those closest to him.',
   about: [
     'Adebola Ewaoluwa Adesanya was a devoted husband, father, son, brother, and friend; he brought joy into every room he entered, and gave generously of himself in every season of life. To know him was to be better for it.',
     'This page has been created by those who loved him, friends, colleagues, and partners, who wish to honour his memory in a practical and meaningful way.',
-    'We show up for his family the way he would have shown up for us; this is what community looks like: standing together when it matters most.',
+    'We stand with his family in the same spirit of care, generosity, and kindness that he extended to others; this is what community looks like when it matters most.',
     'Contributions received through this page will be presented to his wife and children within the month of May 2026; a coordinated expression of love from those whose lives he touched.',
   ],
   contributionIntro:
@@ -261,7 +262,10 @@ function MemorialDonationForm() {
       <div id="memorial-donation-form">
         <FormMain>
           <FormContainer handleSubmit={handleSubmit} onSubmit={onSubmit}>
-            <FormBody title="Make an online contribution" disabled={isNavigating}>
+            <FormBody
+              title="Make an online contribution"
+              disabled={isNavigating}
+            >
               <>
                 {/* <FormInput
                 type="text"
