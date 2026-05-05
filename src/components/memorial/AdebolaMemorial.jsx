@@ -113,7 +113,7 @@ function AdebolaMemorial() {
         <div className={styles.contributionSection}>
           <div className={styles.sectionHeading}>
             <p className={styles.eyebrow}>Contribution details</p>
-            <h2>Coordinated through 1952 Africa Arts Initiative</h2>
+            {/* <h2>Coordinated through 1952 Africa Arts Initiative</h2> */}
             <p>{memorial.contributionIntro}</p>
           </div>
 
