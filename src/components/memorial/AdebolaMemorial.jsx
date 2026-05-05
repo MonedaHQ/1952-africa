@@ -17,16 +17,47 @@ import styles from './styles/adebola.module.css';
 const memorial = {
   name: 'Adebola Ewaoluwa Adesanya',
   sourceUrl: 'https://www.forevermissed.com/adebola-ewaoluwa-adesanya/about', // Original memorial URL on ForeverMissed
-  years: '1985 - 2026',
-  age: '40 years old',
-  born: 'Born on July 30, 1985',
-  passed: 'Passed away on May 1, 2026',
-  quote: 'Let the memory of Adebola be with us forever.',
-  intro:
-    'This memorial page honours the life and memory of Adebola Ewaoluwa Adesanya.',
+  title: 'A Community of Love',
+  subtitle: 'In Memory of Adebola Ewaoluwa Adesanya',
+  intro: 'A coordinated expression of love and support for his family.',
   about: [
-    'This memorial website was created in memory of our loved one, Adebola Adesanya, 40 years old, born on July 30, 1985, and passed away on Friday, May 1. We will remember him forever.',
-    'Adebola Ewaoluwa Adesanya is remembered with love, gratitude, and deep respect by family, friends, and everyone whose life was touched by him.',
+    'Adebola Ewaoluwa Adesanya was a devoted husband, father, son, brother, and friend; he brought joy into every room he entered, and gave generously of himself in every season of life. To know him was to be better for it.',
+    'This page has been created by those who loved him, friends, colleagues, and partners, who wish to honour his memory in a practical and meaningful way.',
+    'We show up for his family the way he would have shown up for us; this is what community looks like: standing together when it matters most.',
+    'Contributions received through this page will be presented to his wife and children within the month of May 2026; a coordinated expression of love from those whose lives he touched.',
+  ],
+  contributionIntro:
+    'Contributions are coordinated through 1952 Africa Arts Initiative, which Adebola supported; the organisation is acting solely as a collection channel for this effort. All funds will be directed to his wife and children, with full transparency.',
+  accounts: [
+    {
+      heading: 'International Contributions',
+      currency: 'USD',
+      details: [
+        ['Account Name', '1952 Africa Arts Initiative'],
+        ['Bank Name', 'Access Bank'],
+        ['Account Number', '1650873994'],
+        ['Swift Code', 'ABNGNGLA'],
+        ['Routing Number', '021000089'],
+        ['Intermediary Swift', 'CITIUS33'],
+      ],
+    },
+    {
+      heading: 'Nigeria Contributions',
+      currency: 'Naira',
+      details: [
+        ['Account Name', '1952 Africa Arts Initiative'],
+        ['Bank Name', 'Access Bank'],
+        ['Account Number', '1650628008'],
+      ],
+    },
+  ],
+  timeline: [
+    'Contributions will be received between the 5th of May and the 19th of May; this allows for a clear and timely update, and for a meaningful presentation to be made to the family within the latter part of the month.',
+    'Additional contributions may still be received until the end of May; however, this channel will close at the end of the month, and no further payments will be received beyond that point.',
+  ],
+  closing: [
+    'We hold his family in our thoughts and prayers.',
+    'May his memory be a blessing, and may his legacy of love continue to live on through all who knew him.',
   ],
   image: {
     src: '/assets/memorial/adebola-ewaoluwa.png',
@@ -44,24 +75,24 @@ function AdebolaMemorial() {
         <main className={styles.hero}>
           <div className={styles.heroContent}>
             <p className={styles.eyebrow}>In loving memory</p>
-            <h1>{memorial.name}</h1>
-            <p className={styles.years}>{memorial.years}</p>
+            <h1>{memorial.title}</h1>
+            <p className={styles.subtitle}>{memorial.subtitle}</p>
             <p>{memorial.intro}</p>
             <div className={styles.actions}>
               <Button
                 variant="primary"
                 onClick={() => handleScrollTo('memorial-donation-form', 80)}
               >
-                Donate in memory
+                Contribute online
               </Button>
-              {/* <a
+              <a
                 href={memorial.sourceUrl}
                 target="_blank"
                 rel="noreferrer"
                 className={styles.sourceLink}
               >
-                Original memorial <HiOutlineArrowTopRightOnSquare />
-              </a> */}
+                Leave a tribute
+              </a>
             </div>
           </div>
           <MemorialImage />
@@ -74,23 +105,21 @@ function AdebolaMemorial() {
         <div className={styles.contentGrid}>
           <article className={styles.story}>
             <p className={styles.eyebrow}>About</p>
-            <h2>Remembering Adebola</h2>
-            <blockquote>{memorial.quote}</blockquote>
-            <ul className={styles.memorialFacts}>
-              <li>{memorial.age}</li>
-              <li>{memorial.born}</li>
-              <li>{memorial.passed}</li>
-            </ul>
+            <h2>{memorial.intro}</h2>
             {memorial.about.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
+            <p>
+              For tributes, memories, and messages, please visit the dedicated
+              tribute page linked separately.
+            </p>
           </article>
 
           <aside className={styles.sidePanel}>
-            <h3>Memorial source</h3>
+            <h3>In loving memory</h3>
             <p>
-              Additional photos and family memories are available on the
-              original ForeverMissed memorial.
+              Contributions will be presented to Adebola&apos;s wife and
+              children within May 2026.
             </p>
             <a href={memorial.sourceUrl} target="_blank" rel="noreferrer">
               Leave a tribute
@@ -99,38 +128,72 @@ function AdebolaMemorial() {
         </div>
       </Section>
 
-      {memorial.photos.length > 0 && (
-        <Section>
-          <div className={styles.gallery}>
-            <div className={styles.sectionHeading}>
-              <p className={styles.eyebrow}>Gallery</p>
-              <h2>Photos</h2>
-            </div>
-            <div className={styles.photoGrid}>
-              {memorial.photos.map((photo) => (
-                <figure key={photo.src} className={styles.photoCard}>
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    width={600}
-                    height={600}
-                    className={styles.photoImage}
-                  />
-                  {photo.caption && <figcaption>{photo.caption}</figcaption>}
-                </figure>
-              ))}
-            </div>
+      <Section>
+        <div className={styles.contributionSection}>
+          <div className={styles.sectionHeading}>
+            <p className={styles.eyebrow}>Contribution details</p>
+            <h2>Coordinated through 1952 Africa Arts Initiative</h2>
+            <p>{memorial.contributionIntro}</p>
           </div>
-        </Section>
-      )}
+
+          <div className={styles.accountGrid}>
+            {memorial.accounts.map((account) => (
+              <article className={styles.accountCard} key={account.heading}>
+                <div>
+                  <p className={styles.accountCurrency}>{account.currency}</p>
+                  <h3>{account.heading}</h3>
+                </div>
+                <dl>
+                  {account.details.map(([label, value]) => (
+                    <div key={label}>
+                      <dt>{label}</dt>
+                      <dd>{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </article>
+            ))}
+          </div>
+
+          <p className={styles.referenceNote}>
+            Please include your full name as the payment reference where
+            possible; this allows contributions to be properly recorded.
+            Anonymous contributions are welcome and will be respected.
+          </p>
+        </div>
+      </Section>
+
+      <Section>
+        <div className={styles.timeline}>
+          <p className={styles.eyebrow}>Contribution timeline</p>
+          <div className={styles.timelineGrid}>
+            {memorial.timeline.map((item, index) => (
+              <article className={styles.timelineItem} key={item}>
+                <span>{index + 1}</span>
+                <p>{item}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <Section variant="dark">
+        <div className={styles.closing}>
+          <p className={styles.eyebrow}>Closing</p>
+          {memorial.closing.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+          <h2>In loving memory of {memorial.name}</h2>
+        </div>
+      </Section>
 
       <Section variant="dark">
         <div className={styles.donationIntro} id="donate-in-memory">
-          <p className={styles.eyebrow}>Support</p>
-          <h2>Donate in memory of Adebola</h2>
+          <p className={styles.eyebrow}>Online contribution</p>
+          <h2>Contribute in support of Adebola&apos;s family</h2>
           <p>
-            Use the form below to make a memorial donation through the same
-            payment system used across 1952 Africa.
+            Use the form below to make a contribution through the secure 1952
+            Africa payment channel.
           </p>
         </div>
       </Section>
@@ -198,7 +261,7 @@ function MemorialDonationForm() {
       <div id="memorial-donation-form">
         <FormMain>
           <FormContainer handleSubmit={handleSubmit} onSubmit={onSubmit}>
-            <FormBody title="Make a memorial donation" disabled={isNavigating}>
+            <FormBody title="Make an online contribution" disabled={isNavigating}>
               <>
                 {/* <FormInput
                 type="text"
