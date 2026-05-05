@@ -114,9 +114,6 @@
 
 .contentGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 32rem;
-  gap: 6rem;
-  align-items: start;
 }
 
 .story,
@@ -138,8 +135,11 @@
 }
 
 .story p {
-  max-width: 82rem;
   font-size: var(--font-size-paragraph-big);
+}
+
+.story {
+  row-gap: 2.6rem;
 }
 
 .story blockquote {
@@ -178,7 +178,6 @@
 .sectionHeading {
   display: grid;
   gap: 1rem;
-  max-width: 86rem;
 }
 
 .sectionHeading p {
@@ -188,6 +187,7 @@
 .accountGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   gap: 2rem;
 }
 
@@ -239,10 +239,36 @@
 }
 
 .referenceNote {
-  max-width: 86rem;
   padding: 2rem 0 0;
   border-top: 1px solid rgba(2, 2, 2, 0.16);
   font-size: var(--font-size-paragraph-big);
+}
+
+.tributePrompt {
+  display: grid;
+  justify-items: center;
+  gap: 1.4rem;
+  max-width: 72rem;
+  margin: 3rem auto 0;
+  padding: 2.4rem;
+  text-align: center;
+  border: 1px solid rgba(94, 8, 20, 0.16);
+  border-radius: 0.6rem;
+  background-color: #fbf7f0;
+}
+
+.tributePrompt p {
+  font-size: var(--font-size-paragraph-big);
+}
+
+.formTributeCta {
+  display: inline-block;
+  color: var(--color-white);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 5rem;
+  background-color: var(--color-wine);
 }
 
 .timelineGrid {
@@ -276,7 +302,6 @@
 }
 
 .closing {
-  max-width: 86rem;
 }
 
 .closing .eyebrow,
@@ -285,8 +310,9 @@
 }
 
 .closing p {
-  font-size: var(--font-size-h4);
-  line-height: 1.35;
+  font-size: var(--font-size-paragraph-big);
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .photoGrid {
@@ -308,7 +334,6 @@
 }
 
 .donationIntro {
-  max-width: 78rem;
 }
 
 .donationIntro p {
@@ -322,7 +347,11 @@
 
 @media (max-width: 70em) {
   .hero,
-  .contentGrid {
+  .contentGrid,
+  .story,
+  .sectionHeading,
+  .closing,
+  .donationIntro {
     grid-template-columns: 1fr;
   }
 
@@ -382,10 +411,6 @@
   .subtitle,
   .story blockquote {
     font-size: var(--font-size-h4);
-  }
-
-  .closing p {
-    font-size: var(--font-size-paragraph-big);
   }
 
   .photoGrid {

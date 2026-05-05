@@ -28,7 +28,7 @@ const memorial = {
     'Contributions received through this page will be presented to his wife and children within the month of May 2026; a coordinated expression of love from those whose lives he touched.',
   ],
   contributionIntro:
-    'Contributions are coordinated through 1952 Africa Arts Initiative, which Adebola supported; the organisation is acting solely as a collection channel for this effort. All funds will be directed to his wife and children, with full transparency.',
+    'Contributions are coordinated through 1952 Africa Arts Initiative, which Adebola supported; the organisation is acting solely as a collection channel for this effort. All funds will be managed with full transparency and presented to the family accordingly.',
   accounts: [
     {
       heading: 'International Contributions',
@@ -75,7 +75,6 @@ function AdebolaMemorial() {
       <Section>
         <main className={styles.hero}>
           <div className={styles.heroContent}>
-            {/* <p className={styles.eyebrow}>In loving memory</p> */}
             <h1>{memorial.title}</h1>
             <p className={styles.subtitle}>{memorial.subtitle}</p>
             <p>{memorial.intro}</p>
@@ -86,14 +85,6 @@ function AdebolaMemorial() {
               >
                 Contribute online
               </Button>
-              <a
-                href={memorial.sourceUrl}
-                target="_blank"
-                rel="noreferrer"
-                className={styles.sourceLink}
-              >
-                Leave a tribute
-              </a>
             </div>
           </div>
           <MemorialImage />
@@ -106,7 +97,7 @@ function AdebolaMemorial() {
         <div className={styles.contentGrid}>
           <article className={styles.story}>
             <p className={styles.eyebrow}>About</p>
-            <h2>{memorial.intro}</h2>
+            {/* <h2>{memorial.intro}</h2> */}
             {memorial.about.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -115,17 +106,6 @@ function AdebolaMemorial() {
               tribute page linked separately.
             </p>
           </article>
-
-          <aside className={styles.sidePanel}>
-            <h3>In loving memory</h3>
-            <p>
-              Contributions will be presented to Adebola&apos;s wife and
-              children within May 2026.
-            </p>
-            <a href={memorial.sourceUrl} target="_blank" rel="noreferrer">
-              Leave a tribute
-            </a>
-          </aside>
         </div>
       </Section>
 
@@ -180,18 +160,15 @@ function AdebolaMemorial() {
 
       <Section variant="dark">
         <div className={styles.closing}>
-          <p className={styles.eyebrow}>Closing</p>
           {memorial.closing.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
-          <h2>In loving memory of {memorial.name}</h2>
         </div>
       </Section>
 
       <Section variant="dark">
         <div className={styles.donationIntro} id="donate-in-memory">
           <p className={styles.eyebrow}>Online contribution</p>
-          <h2>Contribute in support of Adebola&apos;s family</h2>
           <p>
             Use the form below to make a contribution through the secure 1952
             Africa payment channel.
@@ -327,6 +304,20 @@ function MemorialDonationForm() {
             </FormBody>
           </FormContainer>
         </FormMain>
+        <div className={styles.tributePrompt}>
+          <p>
+            If you would like to share a memory, message, or tribute for
+            Adebola, please visit the dedicated tribute page.
+          </p>
+          <a
+            href={memorial.sourceUrl}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.formTributeCta}
+          >
+            Leave a tribute
+          </a>
+        </div>
       </div>
     </Section>
   );
