@@ -61,7 +61,7 @@ const memorial = {
     'May his memory be a blessing, and may his legacy of love continue to live on through all who knew him.',
   ],
   image: {
-    src: '/assets/memorial/adebola-ewaoluwa.png',
+    src: '/assets/memorial/adebola-ewaoluwa.jpeg',
     alt: 'Adebola Ewaoluwa Adesanya',
   },
   photos: [],
