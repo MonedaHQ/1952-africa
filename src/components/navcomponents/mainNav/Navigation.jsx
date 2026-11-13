@@ -1,49 +1,49 @@
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 import Button from '@/components/Button';
 import NavLink from './NavLink';
 
 import styles from './styles/navigation.module.css';
 import { homeMenuLinks } from '@/data/menu';
-import { useRouter } from 'next/router';
 
-function Navigation({ scrollPosition, darkHero = false, bg = true }) {
-  const isHero = scrollPosition > 100;
-  const router = useRouter();
+function Navigation({ scrollPosition, darkHero = false }) {
+  const scrolled = scrollPosition > 40;
+  const overHero = darkHero && !scrolled;
 
-  const dark = darkHero && !isHero ? 'dark' : '';
-  const white = darkHero && !isHero ? '-white' : '';
-
-  const buttonStyle = darkHero && !isHero ? 'primary-reverse' : 'primary';
   return (
     <header
-      className={`${styles.navContainer} ${
-        isHero || bg ? styles.whiteBg : ''
-      } ${dark && styles[dark]}`}
+      className={`${styles.navContainer} ${overHero ? styles.overHero : ''} ${
+        scrolled ? styles.scrolled : ''
+      }`}
     >
-      <div className={styles.logoContainer}>
-        <Image
-          src={`/assets/1952-logo-small${white}.png`}
-          width={88.41}
-          height={49.22}
-          alt="1952 Africa Logo"
-          draggable={false}
-          className={styles.logo}
-          onClick={() => router.push('/')}
-        />
-      </div>
-      <nav className={styles.navigation}>
-        <ul className={styles.navigationList}>
-          {homeMenuLinks.map((link) => (
-            <NavLink key={link.label} link={link} motion={motion} />
-          ))}
-        </ul>
-      </nav>
+      <div className={styles.inner}>
+        <Link href="/" className={styles.logoLink} aria-label="1952 Africa — home">
+          <Image
+            src={`/assets/1952-logo-small${overHero ? '-white' : ''}.png`}
+            width={943}
+            height={525}
+            alt="1952 Africa"
+            draggable={false}
+            className={styles.logo}
+            priority
+          />
+        </Link>
 
-      <Button variant={buttonStyle} onClick={() => router.push('/donate')}>
-        Support Us
-      </Button>
+        <nav className={styles.navigation} aria-label="Primary">
+          <ul className={styles.navigationList}>
+            {homeMenuLinks.map((link) => (
+              <NavLink key={link.label} link={link} />
+            ))}
+          </ul>
+        </nav>
+
+        <div className={styles.actions}>
+          <Button variant={overHero ? 'primary-reverse' : 'primary'} href="/donate">
+            Support us
+          </Button>
+        </div>
+      </div>
     </header>
   );
 }

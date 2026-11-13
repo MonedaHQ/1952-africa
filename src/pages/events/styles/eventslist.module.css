@@ -1,69 +1,89 @@
 .main {
   display: grid;
-  grid-auto-rows: max-content;
-  row-gap: 3rem;
+  gap: clamp(3.2rem, 4vw, 4.8rem);
 }
 
 .events {
   display: grid;
-  grid-auto-rows: max-content;
-  row-gap: 1.8rem;
+  gap: 2.8rem;
+}
+
+.events > h2 {
+  font-size: var(--fs-h2);
+}
+
+
+.eventsContainer {
+  display: grid;
+  border-top: 1px solid var(--color-line);
 }
 
 .event {
   display: grid;
-
-  align-items: center;
-  row-gap: 3rem;
-  column-gap: 1.6rem;
+  grid-template-columns: minmax(0, 32rem) minmax(0, 1fr);
+  align-items: start;
+  gap: 2.4rem clamp(2.4rem, 4vw, 5.6rem);
+  padding: clamp(2rem, 2.4vw, 2.8rem) 0;
+  border-bottom: 1px solid var(--color-line);
 }
-.details {
-  border-top: 1px solid black;
-  padding: 3rem;
+
+.imageContainer {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-sand);
+  border-radius: var(--radius);
 }
 
 .imageContainer img {
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center;
-}
-
-.eventsContainer {
-  display: grid;
-  grid-auto-rows: max-content;
-  row-gap: 1.8rem;
 }
 
 .details {
   display: grid;
-  grid-auto-rows: max-content;
-  row-gap: 1.2rem;
   justify-items: start;
+  gap: 1.2rem;
 }
 
-.details p {
-  text-align: justify;
+.eventLabel {
+  color: var(--color-green-deep);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-.details p li {
-  margin-left: 3rem;
-  margin-top: 1.5rem;
+.details h3 {
+  font-size: var(--fs-h3);
 }
 
-@media only screen and (max-width: 37.5em) {
+.description {
+  color: var(--color-muted);
+  line-height: 1.65;
+}
+
+.description > * + * {
+  margin-top: 1em;
+}
+
+.details > a,
+.details > button {
+  margin-top: 0.8rem;
+}
+
+.noEvents {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-muted);
+}
+
+@media only screen and (max-width: 44em) {
   .event {
     grid-template-columns: 1fr;
   }
 
-  .details {
-    padding-left: 1rem;
-  }
-}
-
-@media only screen and (max-width: 27em) {
-  .imageContainer img {
-    width: 100%;
-    height: auto;
+  .imageContainer {
+    max-width: 40rem;
   }
 }

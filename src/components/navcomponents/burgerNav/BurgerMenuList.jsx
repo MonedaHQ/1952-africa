@@ -1,55 +1,55 @@
+import { useRouter } from 'next/router';
+
 import { homeMenuLinks } from '@/data/menu';
+import { contactInfo } from '@/data/footerLinks';
 import { menuSlide } from '@/utils/anim';
 
+import Bands from '@/components/Bands';
+import Button from '@/components/Button';
 import BurgerNavLinks from './BurgerNavLinks';
 
 import styles from './styles/burgermenulist.module.css';
-import { useOutsideClick } from '@/hooks/useOutsideClick';
-import { useRouter } from 'next/router';
-import Button from '@/components/Button';
 
-function BurgerMenuList({ motion, isMenuOpen, closeMenu }) {
-  const ref = useOutsideClick(closeMenu);
+function BurgerMenuList({ motion, closeMenu }) {
   const router = useRouter();
-
   const isHomepage = router.pathname === '/';
 
-  let navigationList = homeMenuLinks;
-
-  if (!isHomepage) {
-    navigationList = [{ label: 'Home', path: '/' }, ...navigationList];
-  }
+  const navigationList = isHomepage
+    ? homeMenuLinks
+    : [{ label: 'Home', path: '/' }, ...homeMenuLinks];
 
   return (
     <motion.nav
-      className={styles.navigationList}
+      className={styles.panel}
       variants={menuSlide}
       initial="initial"
       animate="enter"
       exit="exit"
-      ref={ref}
+      aria-label="Mobile"
     >
-      <div className={styles.title}>
-        <h3>Navigate to</h3>
+      <div className={styles.scroll}>
+        <p className={styles.title}>Menu</p>
+        <ul className={styles.navigationList}>
+          {navigationList.map((nav, index) => (
+            <BurgerNavLinks
+              key={nav.label}
+              data={{ nav, index }}
+              motion={motion}
+              closeMenu={closeMenu}
+            />
+          ))}
+        </ul>
+
+        <div className={styles.footer}>
+          <Button variant="primary-reverse" href="/donate" onClick={closeMenu}>
+            Support us
+          </Button>
+          <a href={`mailto:${contactInfo.data.email}`} className={styles.mail}>
+            {contactInfo.data.email}
+          </a>
+        </div>
       </div>
-      {navigationList.map((nav, index) => (
-        <BurgerNavLinks
-          key={nav.label}
-          data={{ nav, index }}
-          motion={motion}
-          isMenuOpen={isMenuOpen}
-          closeMenu={closeMenu}
-        />
-      ))}
-      <Button
-        variant="primary-reverse"
-        onClick={() => {
-          router.push('/donate');
-          closeMenu();
-        }}
-      >
-        Support us
-      </Button>
+      <Bands tone="gold" size="sm" />
     </motion.nav>
   );
 }

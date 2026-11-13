@@ -12,7 +12,13 @@ import Footer from '@/components/Footer';
 
 function Raffle() {
   const scrollPosition = useScrollPosition(scrollOffset);
-  const raffleItem = [raffleData.photo];
+  const raffleItem = [
+    {
+      src: raffleData.photo,
+      title: 'The raffle piece',
+      artist: raffleData.artist,
+    },
+  ];
 
   return (
     <>

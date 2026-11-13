@@ -13,10 +13,6 @@ export const footerLinks = [
     heading: 'Make a donation',
     links: [
       { label: 'Financial Donation', link: '/donate?method=corporate' },
-      {
-        label: 'Adebola Ewaoluwa Adesanya',
-        link: '/adebola-ewaoluwa-adesanya',
-      },
       // { label: 'Partner with us', link: '/donate?method=partner' },
     ],
   },
@@ -43,7 +39,7 @@ export const contactInfo = {
       },
       { link: 'https://twitter.com/1952Africa', icon: <RiTwitterXLine /> },
       {
-        link: 'https://www.linkedin.com/company/1952-africa/',
+        link: 'https://www.linkedin.com/company/1952-africa-art-foundation/',
         icon: <PiLinkedinLogo />,
       },
       // { link: 'https://www.tiktok.com', icon: <PiTiktokLogoLight /> },

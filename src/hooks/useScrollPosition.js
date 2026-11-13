@@ -1,32 +1,22 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * Returns the scroll offset, capped just past `position`.
+ * Capping means components only re-render while the page is near the top,
+ * not on every scroll event further down.
+ */
 function useScrollPosition(position = 200) {
   const [scrollY, setScrollY] = useState(0);
-  const [isTracking, setIsTracking] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isTracking) {
-        setScrollY(window.scrollY);
-      }
-
-      // Check if scrollY reaches 200 and stop tracking
-      if (window.scrollY >= position && isTracking) {
-        setIsTracking(false);
-      }
-
-      // Check if scrollY returns to 0 and resume tracking
-      if (window.scrollY <= position && !isTracking) {
-        setIsTracking(true);
-      }
+      setScrollY(Math.min(Math.round(window.scrollY), position + 1));
     };
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isTracking, position]);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [position]);
 
   return scrollY;
 }

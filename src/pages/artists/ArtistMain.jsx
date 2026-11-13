@@ -1,84 +1,87 @@
-import Section from '@/components/Section';
-
-import styles from './styles/artistmain.module.css';
-import { useRouter } from 'next/router';
-import { convertToEmbedLink } from '@/utils/helpers';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
+  PiArrowLeft,
   PiClipboardTextLight,
-  PiUserPlus,
   PiInstagramLogoLight,
 } from 'react-icons/pi';
-import Button from '@/components/Button';
-import Image from 'next/image';
-import Loader from '@/components/Loader';
 
-function ArtistMain({ artist, activity, works }) {
+import Button from '@/components/Button';
+import Loader from '@/components/Loader';
+import Section from '@/components/Section';
+import { convertToEmbedLink } from '@/utils/helpers';
+
+import styles from './styles/artistmain.module.css';
+
+function ArtistMain({ artist, activity }) {
   if (!artist) return <Loader />;
-  const youtubeEmbedLink = convertToEmbedLink(artist?.video_url) || '';
+  const youtubeEmbedLink = convertToEmbedLink(artist?.video_url || '') || '';
+
   return (
     <Section>
-      <main className={styles.main}>
-        <ArtistDetails artist={artist} activity={activity} works={works} />
-        <Video videoLink={youtubeEmbedLink} artist={artist} />
-      </main>
-    </Section>
-  );
-}
+      <div className={styles.main}>
+        <Link href="/artists" className={styles.back}>
+          <PiArrowLeft aria-hidden="true" /> All artists
+        </Link>
 
-function ArtistDetails({ artist, activity, works }) {
-  const router = useRouter();
-  return (
-    <div className={styles.artistDetails}>
-      <div className={styles.artistImageAndTitle}>
-        <Image
-          src={artist.image_url}
-          width={150}
-          height={150}
-          alt={`${artist.first_name}'s photo`}
-          draggable={false}
-        />
-        <h3>
-          {artist.first_name} {artist.last_name}
-        </h3>
+        <div
+          className={`${styles.artistDetails} ${
+            youtubeEmbedLink ? styles.withVideo : ''
+          }`}
+        >
+          <div className={styles.portrait}>
+            <Image
+              src={artist.image_url}
+              width={480}
+              height={600}
+              alt={`${artist.first_name} ${artist.last_name}`}
+              draggable={false}
+              priority
+            />
+          </div>
+
+          <div className={styles.summary}>
+            <span className="eyebrow">Artist</span>
+            <h1>
+              {artist.first_name} {artist.last_name}
+            </h1>
+            {artist.medium && <p className={styles.medium}>{artist.medium}</p>}
+
+            <ul className={styles.artistMetrics}>
+              {activity && (
+                <li>
+                  <PiClipboardTextLight />
+                  <Button variant="link-light" href={`/activities/${activity.id}`}>
+                    {activity.title}
+                  </Button>
+                </li>
+              )}
+              {artist.instagram_url && (
+                <li>
+                  <PiInstagramLogoLight />
+                  <Button variant="link-light" href={artist.instagram_url}>
+                    Find {artist.first_name} on Instagram
+                  </Button>
+                </li>
+              )}
+            </ul>
+          </div>
+
+          {youtubeEmbedLink && (
+            <div className={styles.videoContainer}>
+              <iframe
+                src={youtubeEmbedLink}
+                title={`${artist.first_name} ${artist.last_name}`}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          )}
+        </div>
+
       </div>
-      <ul className={styles.artistMetrics}>
-        {activity && (
-          <li>
-            <PiClipboardTextLight />{' '}
-            <Button
-              variant="link-light"
-              onClick={() => router.push(`/activities/${activity.id}`)}
-            >
-              {activity.title}
-            </Button>
-          </li>
-        )}
-
-        <li>
-          <PiInstagramLogoLight />{' '}
-          <Button variant="link-light" href={artist.instagram_url}>
-            Find {artist.first_name} on Instagram
-          </Button>
-        </li>
-      </ul>
-    </div>
-  );
-}
-
-function Video({ videoLink, artist }) {
-  if (!videoLink || !artist) return <Loader />;
-
-  return (
-    <div className={styles.videoContainer}>
-      <iframe
-        width="560"
-        height="315"
-        src={videoLink}
-        title={artist.title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-      ></iframe>
-    </div>
+    </Section>
   );
 }
 

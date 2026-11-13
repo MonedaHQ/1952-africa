@@ -1,49 +1,57 @@
 .section {
   display: grid;
   place-items: center;
-  height: 100vh;
-
-  background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(0, 0, 0, 0.9) 100%
-    ),
-    url('/images/motif.jpg'), lightgray 50% / cover no-repeat;
+  min-height: 100svh;
+  padding: 4rem var(--gutter);
+  background: var(--color-ivory);
 }
 
 .content {
-  background-color: var(--color-white);
-  padding: 2rem 4rem;
-  border-radius: 0.8rem;
-
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  display: grid;
+  gap: 3.2rem;
+  width: 100%;
+  max-width: 52rem;
+  padding: clamp(3.2rem, 5vw, 5.6rem);
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  text-align: center;
 }
 
 .message {
-  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 1.2rem;
 }
+
+.message h4 {
+  font-size: var(--fs-h3);
+}
+
+.message p {
+  color: var(--color-muted);
+}
+
+.icon svg {
+  width: 5.6rem;
+  height: 5.6rem;
+}
+
 .success {
   color: var(--color-green);
 }
+
 .fail {
   color: var(--color-fail);
-}
-.message h4 {
-  font-size: 2rem;
-}
-
-.icon {
-  font-size: 2.4rem;
 }
 
 .btnWrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2rem;
   justify-content: center;
+  gap: 1.2rem;
+}
+
+.btnWrap a:last-child:not(:first-child) {
+  border-color: var(--color-line-strong);
 }

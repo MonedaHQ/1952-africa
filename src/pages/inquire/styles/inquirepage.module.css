@@ -1,10 +1,6 @@
 .main {
-  min-height: 100vh;
-  display: grid;
-  align-items: center;
-  /* place-items: center; */
-  background-color: var(--color-white);
-  padding-top: 8rem;
+  min-height: 80vh;
+  padding-top: calc(var(--nav-h) + 2.4rem);
 }
 
 .textarea {

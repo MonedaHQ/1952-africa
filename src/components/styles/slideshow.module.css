@@ -1,0 +1,30 @@
+.layers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #111;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+
+.layer img {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.09);
+  transition: transform 0s 1.6s;
+}
+
+.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.active img {
+  transform: scale(1);
+  transition: transform 9s cubic-bezier(0.16, 0.6, 0.3, 1);
+}

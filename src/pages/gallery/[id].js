@@ -7,6 +7,7 @@ import BurgerNavigation from '@/components/navcomponents/burgerNav/BurgerNavigat
 import Navigation from '@/components/navcomponents/mainNav/Navigation';
 import useScrollPosition from '@/hooks/useScrollPosition';
 import { getExhibition } from '@/services/apiGallery';
+import { getArtist } from '@/services/apiArtists';
 import { getSpecificWorks } from '@/services/apiWorks';
 import { scrollOffset } from '@/utils/config';
 import { useRouter } from 'next/router';
@@ -23,6 +24,7 @@ function Exhibition() {
 
   const [currentExhibition, setCurrentExhibition] = useState(null);
   const [currentWorks, setCurrentWorks] = useState(null);
+  const [artistNames, setArtistNames] = useState({});
 
   const scrollPosition = useScrollPosition(scrollOffset);
 
@@ -33,6 +35,19 @@ function Exhibition() {
         setCurrentExhibition(exhibition);
         const works = await getSpecificWorks({ exhibition_id: id, page });
         setCurrentWorks(works);
+
+        // credit each work's artist in the grid
+        const ids = [...new Set((works?.data || []).map((w) => w.artist_id))];
+        const artists = await Promise.all(
+          ids.map((artistId) => getArtist(artistId).catch(() => null))
+        );
+        setArtistNames(
+          Object.fromEntries(
+            artists
+              .filter(Boolean)
+              .map((a) => [a.id, `${a.first_name} ${a.last_name}`])
+          )
+        );
       }
       if (id) {
         fetchExhibition(id);
@@ -63,7 +78,11 @@ function Exhibition() {
       <HeadingAndParagraph
         content={[{ heading: null, paragraph: currentExhibition.description }]}
       />
-      <WorkList works={currentWorks} />
+      <WorkList
+        works={currentWorks}
+        artistNames={artistNames}
+        emptyMessage="This was a private exhibition, so its works cannot be displayed."
+      />
       <Bands />
       <Footer />
     </>

@@ -1,102 +1,51 @@
-.navigationList {
-  position: absolute;
-  list-style: none;
-  display: grid;
-  grid-auto-rows: max-content;
-  row-gap: 3rem;
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2050;
+  display: flex;
+  flex-direction: column;
+  width: min(100vw, 46rem);
+  height: 100dvh;
   background-color: var(--color-black);
   color: var(--color-white);
-  width: 50rem;
-  height: 100vh;
-  top: -4rem;
-  right: -4rem;
-  padding: 10em 6rem;
-  z-index: 5;
-  overflow: auto;
+}
+
+.scroll {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 9.6rem clamp(2.4rem, 7vw, 4.8rem) 3.2rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .title {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-}
-
-.title h3 {
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--color-line-light);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  letter-spacing: 0.15rem;
-  font-weight: 300;
-  padding: 1rem 0;
-  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.navigationList {
+  list-style: none;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  margin-top: auto;
+  padding-top: 4rem;
+}
+
+.mail {
+  font-size: var(--fs-small);
   color: rgba(255, 255, 255, 0.7);
-}
-
-.navLink {
-  font-size: 3.8rem;
-  color: inherit;
-
-  font-weight: 400;
   text-decoration: none;
-}
-
-.navLink {
-  overflow: hidden;
-  position: relative;
-  display: inline-block;
-  transition: all 0.2s;
-}
-
-.navLink:hover {
-  color: var(--color-gold);
-}
-
-.navLink::before,
-.navLink::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  left: 0;
-}
-.navLink::before {
-  background-color: var(--color-gold);
-  height: 2px;
-  bottom: 0;
-  transform-origin: 100% 50%;
-  transform: scaleX(0);
-  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-}
-.navLink::after {
-  content: '';
-  height: 100%;
-  top: 0;
-  transform-origin: 100% 50%;
-  transform: translate3d(200%, 0, 0);
-  transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
-  color: var(--color-orange);
-}
-
-.navLink:hover::before {
-  transform-origin: 0% 50%;
-  transform: scaleX(1);
-}
-.navLink:hover::after {
-  transform: translate3d(0, 0, 0);
-}
-
-@media only screen and (max-width: 40.625em) {
-  .navigationList {
-    width: 100vw;
-  }
-}
-
-@media only screen and (max-width: 26.25em) {
-  .navigationList {
-    padding: 10rem 4rem;
-  }
-  .navLink {
-    font-size: 3rem;
-  }
-}
-
-@media only screen and (max-width: 17.5em) {
-  .navLink {
-    font-size: 2rem;
-  }
 }

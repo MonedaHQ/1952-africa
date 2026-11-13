@@ -1,21 +1,31 @@
-import { motion, useInView } from 'framer-motion';
 import Section from '@/components/Section';
 import styles from './styles/activitycontent.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useRef } from 'react';
-import { slide } from '@/utils/anim';
 import Empty from '@/components/Empty';
 import Loader from '@/components/Loader';
+import { convertToEmbedLink } from '@/utils/helpers';
 
 function ActivityContent({ activity, artists }) {
   if (!activity || !artists) return <Loader />;
+  const videoLink = convertToEmbedLink(activity.video_url || '');
   return (
     <Section>
       <div className={styles.contentContainer}>
-        <div>
-          <h3>Description:</h3>
-          <div dangerouslySetInnerHTML={{ __html: activity.description }} />
+        <div className={styles.main}>
+          {videoLink && (
+            <div className={styles.videoContainer}>
+              <iframe
+                src={videoLink}
+                title={activity.title}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          )}
+          <h2>About this activity</h2>
+          <div className={styles.description} dangerouslySetInnerHTML={{ __html: activity.description }} />
           {/* <p>{activity.description}</p> */}
         </div>
         <div className={styles.artistBox}>
@@ -30,7 +40,7 @@ function Artists({ artists }) {
   if (artists.data.length < 1) return <Empty resourceName="artists" />;
   return (
     <div className={styles.artists}>
-      <h4>Artists ({artists.meta.totalItems})</h4>
+      <h3>Artists</h3>
       <div>
         {artists.data.map((artist, index) => (
           <Artist artist={artist} key={artist.id} index={index} />
@@ -42,17 +52,10 @@ function Artists({ artists }) {
 
 function Artist({ artist, index }) {
   const router = useRouter();
-  const ref = useRef();
-  const inView = useInView(ref, { once: true });
   return (
     <div
       className={styles.artist}
       onClick={() => router.push(`/artists/${artist.id}`)}
-      custom={index}
-      variants={slide}
-      initial="initial"
-      animate={inView ? 'enter' : 'initial'}
-      ref={ref}
     >
       <div className={styles.artistImageContainer}>
         <Image

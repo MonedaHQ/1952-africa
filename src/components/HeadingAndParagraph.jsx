@@ -2,18 +2,30 @@ import Section from './Section';
 
 import styles from './styles/headingandparagraph.module.css';
 
+/** All blocks share one section, so spacing between them stays tight. */
 function HeadingAndParagraph({ content }) {
+  const blocks = content.filter((item) => item.paragraph);
+  if (!blocks.length) return null;
+
   return (
-    <>
-      {content.map((item) => (
-        <Section key={item.paragraph}>
-          <div className={styles.contentContainer}>
-            {item.heading && <h3 className={styles.heading}>{item.heading}</h3>}
-            <div dangerouslySetInnerHTML={{ __html: item.paragraph }} />
+    <Section>
+      <div className={styles.stack}>
+        {blocks.map((item, index) => (
+          <div
+            key={item.heading || index}
+            className={`${styles.contentContainer} ${
+              item.heading ? '' : styles.withoutHeading
+            }`}
+          >
+            {item.heading && <h2 className={styles.heading}>{item.heading}</h2>}
+            <div
+              className={styles.paragraph}
+              dangerouslySetInnerHTML={{ __html: item.paragraph }}
+            />
           </div>
-        </Section>
-      ))}
-    </>
+        ))}
+      </div>
+    </Section>
   );
 }
 

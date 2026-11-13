@@ -1,113 +1,121 @@
 import Image from 'next/image';
-import styles from './styles/footer.module.css';
+import Link from 'next/link';
+import { PiArrowUpRight } from 'react-icons/pi';
+
 import { contactInfo, footerLinks, homeLinks } from '@/data/footerLinks';
-import Button from './Button';
-import { useRouter } from 'next/router';
 import { useSmoothScroll } from '@/context/SmoothScrollContext';
+
+import styles from './styles/footer.module.css';
+
+const socialNames = {
+  instagram: 'Instagram',
+  facebook: 'Facebook',
+  youtube: 'YouTube',
+  twitter: 'X',
+  linkedin: 'LinkedIn',
+};
+
+const socialName = (url) =>
+  Object.entries(socialNames).find(([key]) => url.includes(key))?.[1] || 'Social';
 
 function Footer({ quickLinks = homeLinks, data = footerLinks }) {
   const year = new Date().getFullYear();
+  const { email, phoneNumber, whatsapp, socials } = contactInfo.data;
 
-  const router = useRouter();
   return (
     <footer className={styles.footer}>
-      <div className={styles.content}>
-        <div className={styles.logo}>
-          <Image
-            src="/assets/1952-main-logo-white.png"
-            width={145}
-            height={173}
-            alt="1952 Logo"
-            draggable="false"
-          />
-        </div>
-        <div className={styles.footLinks}>
-          {quickLinks.map((link) => (
-            <FooterLinks link={link} key={link.heading} />
-          ))}
-          {data.map((link) => (
-            <FooterLinks link={link} key={link.heading} />
-          ))}
-          <div className={styles.contactBox}>
-            <h4>{contactInfo.heading}</h4>
-            <ul className={styles.contactLinks}>
-              <li className={styles.contactLink}>
-                Email us at
-                <Button
-                  variant="link-light"
-                  href={`mailto:${contactInfo.data.email}`}
-                >
-                  {' '}
-                  {contactInfo.data.email}
-                </Button>
-              </li>
-              {contactInfo.data.phoneNumber && (
-                <li className={styles.contactLink}>
-                  Call us on
-                  <Button
-                    variant="link-light"
-                    href={`tel:${contactInfo.data.phoneNumber}`}
-                  >
-                    {contactInfo.data.phoneNumber}
-                  </Button>
+      <div className={styles.inner}>
+        <div className={styles.top}>
+          <div className={styles.brand}>
+            <Image
+              src="/assets/1952-main-logo-white.png"
+              width={943}
+              height={1127}
+              alt="1952 Africa — Art, Culture, History"
+              draggable={false}
+              className={styles.logo}
+            />
+            <p className={styles.statement}>
+              An art foundation dedicated to the growth and global recognition
+              of African art.
+            </p>
+            <Link href="/donate" className={styles.cta}>
+              Support the foundation <PiArrowUpRight aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className={styles.columns}>
+            {[...quickLinks, ...data].map((group) => (
+              <FooterLinks link={group} key={group.heading} />
+            ))}
+
+            <div className={styles.linkBlock}>
+              <h4>{contactInfo.heading}</h4>
+              <ul className={styles.linkList}>
+                <li>
+                  <a href={`mailto:${email}`}>{email}</a>
                 </li>
-              )}
-              {contactInfo.data.whatsapp && (
-                <li className={styles.contactLink}>
-                  Send us a message on
-                  <Button variant="link-light" href={contactInfo.data.whatsapp}>
-                    Whatsapp
-                  </Button>
-                </li>
-              )}
-              <div>
-                <h4>Follow us on Social Media</h4>
-                <div className={styles.socialIcons}>
-                  {contactInfo.data.socials.map((link) => (
-                    <Button
-                      variant="link-light"
-                      key={link.link}
-                      onClick={() => router.push(link.link)}
-                    >
-                      <p className={styles.icon}>{link.icon}</p>
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            </ul>
+                {phoneNumber && (
+                  <li>
+                    <a href={`tel:${phoneNumber.replace(/\s/g, '')}`}>{phoneNumber}</a>
+                  </li>
+                )}
+                {whatsapp && (
+                  <li>
+                    <a href={whatsapp} target="_blank" rel="noopener noreferrer">
+                      Message us on WhatsApp
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </div>
           </div>
         </div>
+
+        <div className={styles.bottom}>
+          <p>
+            &copy; {year} 1952 Africa&reg; · All rights reserved
+          </p>
+          <ul className={styles.socialIcons} aria-label="Follow us on social media">
+            {socials.map((social) => (
+              <li key={social.link}>
+                <a
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={socialName(social.link)}
+                >
+                  {social.icon}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className={styles.allRightsReserved}>
-        <p>
-          &copy; {year} | <strong>1952 Africa&reg;</strong> | All Rights
-          Reserved.{' '}
-        </p>
-      </div>
+
+      {/* the 52 band, oversized, as the foundation's signature */}
+      <div className={styles.watermark} aria-hidden="true" />
     </footer>
   );
 }
 
 function FooterLinks({ link }) {
   const { heading, links } = link;
-  const router = useRouter();
   const { handleScrollTo } = useSmoothScroll();
+
   return (
     <div className={styles.linkBlock}>
       <h4>{heading}</h4>
       <ul className={styles.linkList}>
-        {links.map((link, index) => (
-          <li key={heading + index} className={styles.link}>
-            <Button
-              variant="link-light"
-              onClick={() => {
-                link.link.includes('/')
-                  ? router.push(link.link)
-                  : handleScrollTo(link.link, 200);
-              }}
-            >
-              {link.label}
-            </Button>
+        {links.map((item) => (
+          <li key={item.label}>
+            {item.link.includes('/') ? (
+              <Link href={item.link}>{item.label}</Link>
+            ) : (
+              <button type="button" onClick={() => handleScrollTo(item.link, 100)}>
+                {item.label}
+              </button>
+            )}
           </li>
         ))}
       </ul>

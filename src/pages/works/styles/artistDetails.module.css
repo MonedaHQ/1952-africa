@@ -1,35 +1,46 @@
 .artistDetailBox {
-  max-width: max-content;
-  margin: auto;
-
   display: grid;
-  grid-template-columns: repeat(2, max-content);
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  column-gap: 1.2rem;
-
-  padding: 4rem 0;
-  padding-top: 0;
-
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.artistDetailBox:hover {
-  color: var(--color-green);
+  gap: 1.6rem;
+  padding: 1.6rem 0;
+  border-block: 1px solid var(--color-line);
+  color: inherit;
+  text-decoration: none;
 }
 
 .imageContainer img {
-  border-radius: 5rem;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
 }
 
-@media only screen and (max-width: 28em) {
-  .imageContainer img {
-    width: 60px;
-    height: 60px;
-  }
-  .name {
-    font-size: 1.6rem;
-  }
+.content {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.label {
+  color: var(--color-muted);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.name {
+  font-size: var(--fs-h4);
+  font-weight: 400;
+}
+
+.artistDetailBox svg {
+  width: 2rem;
+  height: 2rem;
+  transition: transform 0.35s var(--ease);
+}
+
+.artistDetailBox:hover svg {
+  transform: translate(0.3rem, -0.3rem);
 }

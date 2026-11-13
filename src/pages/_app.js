@@ -1,20 +1,27 @@
-import { MenuTogglerProvider } from '@/context/MenuToggleContext';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { SmoothScrollProvider } from '@/context/SmoothScrollContext';
 import { Teachers } from 'next/font/google';
-import '@/styles/globals.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 
+import { MenuTogglerProvider } from '@/context/MenuToggleContext';
+import { SmoothScrollProvider } from '@/context/SmoothScrollContext';
+import '@/styles/globals.css';
+
 const teachers = Teachers({
-  subsets: ['latin'],
-  variable: '--font-primary',
+  subsets: ['latin', 'latin-ext'],
+  style: ['normal', 'italic'],
   display: 'swap',
 });
 
+const queryClient = new QueryClient();
+
 export default function App({ Component, pageProps }) {
-  const queryClient = new QueryClient();
   return (
-    <div className={`${teachers.variable} ${teachers.className}`}>
+    <>
+      <style jsx global>{`
+        :root {
+          --font-teachers: ${teachers.style.fontFamily};
+        }
+      `}</style>
       <QueryClientProvider client={queryClient}>
         <SmoothScrollProvider>
           <MenuTogglerProvider>
@@ -38,6 +45,6 @@ export default function App({ Component, pageProps }) {
           }}
         />
       </QueryClientProvider>
-    </div>
+    </>
   );
 }

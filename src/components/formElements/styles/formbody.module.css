@@ -1,36 +1,39 @@
+.formBody {
+  display: grid;
+  gap: clamp(2.8rem, 3vw, 4rem);
+}
+
 .title {
-  background-color: var(--color-light-grey);
-  padding: 1.4rem 2rem;
+  padding-bottom: 2.4rem;
+  border-bottom: 1px solid var(--color-line);
 }
 
 .title h4 {
-  font-weight: 500;
+  font-size: var(--fs-h3);
 }
 
 .formFields {
-  padding: 2rem 4rem;
-
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: 3rem;
-  column-gap: 3rem;
-
-  background-color: var(--color-white);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.4rem 2rem;
 }
 
 .buttonContainer {
-  padding: 4rem;
   display: flex;
-  justify-content: center;
-  background-color: var(--color-white);
+  justify-content: flex-end;
 }
 
-@media only screen and (max-width: 42em) {
-  .formFields {
-    padding: 2rem;
-    row-gap: 1.4rem;
-    column-gap: 1.4rem;
+.buttonContainer button {
+  min-width: 18rem;
+  padding-block: 1.5rem;
+}
 
+@media only screen and (max-width: 40em) {
+  .formFields {
     grid-template-columns: 1fr;
+  }
+
+  .buttonContainer button {
+    width: 100%;
   }
 }

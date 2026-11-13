@@ -13,7 +13,7 @@ function ChiziWigwePrize() {
     <>
       <MetaTags
         title="The Chizi Wigwe Prize - 1952 Africa"
-        description="The 1952 Africa Foundation, in partnership with the HOW Foundation, is pleased to announce the inaugural Chizi Wigwe Prize for African Futurism. This prestigious prize seeks to empower African artists and creatives to envision a brighter future for the continent through innovative artistic expressions. "
+        description="The Chizi Wigwe Prize for African Futurism is a $15,000 award by the 1952 Africa Foundation and the HOW Foundation, celebrating African artists who imagine the continent's future through the theme Africa in 2100."
       />
       <Navigation scrollPosition={scrollPosition} />
       <BurgerNavigation />

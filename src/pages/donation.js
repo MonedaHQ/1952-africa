@@ -69,10 +69,8 @@ function Donation() {
                 : 'Your memorial donation could not be completed. Please try again.'
               : undefined
           }
-          buttonLabel={isMemorialDonation ? 'Back to memorial' : 'Back Home'}
-          buttonHref={
-            isMemorialDonation ? '/adebola-ewaoluwa-adesanya' : '/'
-          }
+          buttonLabel="Back Home"
+          buttonHref="/"
           secondaryButtonLabel={
             isMemorialDonation && isSuccessful ? 'Leave a tribute' : undefined
           }

@@ -1,94 +1,70 @@
-import { motion, useInView } from 'framer-motion';
-import Pagination from './Pagination';
-import Section from './Section';
-import { useRouter } from 'next/router';
-import Button from './Button';
 import Image from 'next/image';
+import Link from 'next/link';
+import { PiArrowUpRight } from 'react-icons/pi';
+
+import Pagination from './Pagination';
+import Reveal from './Reveal';
+import Section from './Section';
 
 import styles from './styles/itemlist.module.css';
-import { useRef } from 'react';
-import { slide } from '@/utils/anim';
 import { truncateString } from '@/utils/helpers';
 
-function ItemList({
-  title,
-  data,
-  paginationCount,
-  isLoading,
-  navigateTo,
-  btnLabel = 'View',
-}) {
+function ItemList({ title, data, paginationCount, isLoading, navigateTo }) {
   return (
     <Section>
-      <main className={styles.main}>
-        <h3 className={styles.heading}>
-          {title} ({paginationCount || 0})
-        </h3>
+      <div className={styles.main}>
+        <h2 className={styles.heading}>{title}</h2>
         {!isLoading && (
           <div className={styles.itemsContainer}>
             {data.map((item, index) => (
               <Item
                 item={item}
-                key={item.title}
+                key={item.id || item.title}
                 index={index}
                 navigateTo={navigateTo}
-                btnLabel={btnLabel}
               />
             ))}
           </div>
         )}
-        <div>
-          <Pagination count={paginationCount} />
-        </div>
-      </main>
+        <Pagination count={paginationCount} />
+      </div>
     </Section>
   );
 }
 
-function Item({ item, index, navigateTo, btnLabel }) {
-  const ref = useRef();
-  const inView = useInView(ref, { once: true });
-
-  const router = useRouter();
-
+function Item({ item, index, navigateTo }) {
   const truncatedDescription =
-    item.description && truncateString(item.description, 64);
+    item.description && truncateString(item.description, 40);
 
   return (
-    <div
-      className={styles.item}
-      ref={ref}
-      custom={index}
-      variants={slide}
-      initial="initial"
-      animate={inView ? 'enter' : 'initial'}
-    >
-      <div className={styles.itemImageContainer}>
-        <Image
-          width={300}
-          height={300}
-          src={item.image_url}
-          alt={item.title}
-          draggable={false}
-        />
-      </div>
-      <div className={styles.itemContent}>
-        <div className={styles.content}>
-          <h4 className={styles.itemTitle}>{item.title}</h4>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: truncatedDescription || item.medium,
-            }}
+    <Reveal as="article" delay={(index % 3) * 0.08}>
+      <Link className={styles.item} href={`/${navigateTo}/${item.id}`}>
+        <div className={styles.itemImageContainer}>
+          <Image
+            width={900}
+            height={675}
+            src={item.image_url}
+            alt={item.title}
+            sizes="(max-width: 750px) 100vw, (max-width: 980px) 50vw, 33vw"
+            draggable={false}
           />
         </div>
-        <Button
-          variant="primary"
-          onClick={() => router.push(`/${navigateTo}/${item.id}`)}
-        >
-          {btnLabel}
-        </Button>
-      </div>
-    </div>
+        <div className={styles.itemContent}>
+          <div className={styles.itemText}>
+            <h3 className={styles.itemTitle}>{item.title}</h3>
+            <div
+              className={styles.description}
+              dangerouslySetInnerHTML={{
+                __html: truncatedDescription || item.medium || '',
+              }}
+            />
+          </div>
+          <span className={styles.itemArrow}>
+            <PiArrowUpRight aria-hidden="true" />
+          </span>
+        </div>
+      </Link>
+    </Reveal>
   );
 }
 

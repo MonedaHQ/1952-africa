@@ -1,48 +1,82 @@
-.marquee {
-  position: relative;
+.band {
+  --band-h: 2.2rem;
+  --band-fg: var(--color-ink);
+  --band-bg: var(--color-ivory);
+  /* band.png is 943 x 116 — keep that ratio for every tile */
+  --tile: calc(var(--band-h) * 8.1293);
+
   display: grid;
-  grid-auto-rows: max-content;
-  row-gap: 0rem;
-  padding: 0.1rem 0;
+  gap: 0.8rem;
+  padding: 1.4rem 0;
   overflow: hidden;
+  background: var(--band-bg);
+  border-block: 1px solid var(--color-line);
 }
 
-.bandsContainer {
-  width: 200%;
-  white-space: nowrap;
+.track {
+  width: calc(100% + var(--tile) * 2);
+  height: var(--band-h);
+  background: var(--band-fg);
+  -webkit-mask: url('/assets/band.png') left center / var(--tile) var(--band-h)
+    repeat-x;
+  mask: url('/assets/band.png') left center / var(--tile) var(--band-h) repeat-x;
+  animation: bandSlide 26s linear infinite;
+  will-change: transform;
 }
 
-.scrollContainer {
-  display: inline-block;
-  white-space: nowrap;
-  animation: slide 200s linear infinite;
-}
-
-.scrollContainer.right {
+.reverse {
   animation-direction: reverse;
 }
 
-.scrollContainer img {
-  max-width: 120px;
-  height: auto;
-  display: inline-block;
+.sm {
+  --band-h: 1.4rem;
+  padding: 1rem 0;
 }
 
-.bands {
-  display: inline-block;
+.lg {
+  --band-h: 3.6rem;
+  padding: 2rem 0;
 }
 
-@keyframes slide {
-  from {
-    transform: translateX(0);
-  }
+.gold {
+  --band-fg: var(--color-gold);
+  --band-bg: var(--color-black);
+  border-color: transparent;
+}
+
+.light {
+  --band-fg: rgba(255, 255, 255, 0.9);
+  --band-bg: var(--color-black);
+  border-color: transparent;
+}
+
+.green {
+  --band-fg: var(--color-ivory);
+  --band-bg: var(--color-green-deep);
+  border-color: transparent;
+}
+
+.bare {
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+@keyframes bandSlide {
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(var(--tile) * -1));
   }
 }
 
 @media only screen and (max-width: 37.5em) {
-  .scrollContainer img {
-    max-width: 80px;
+  .band {
+    --band-h: 1.8rem;
+    padding: 1.2rem 0;
+  }
+  .sm {
+    --band-h: 1.2rem;
+  }
+  .lg {
+    --band-h: 2.6rem;
   }
 }

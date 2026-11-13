@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import styles from './styles/searchbar.module.css';
+import { PiMagnifyingGlass } from 'react-icons/pi';
 
 function SearchBar() {
   const router = useRouter();
@@ -27,6 +28,7 @@ function SearchBar() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
+      <button type="submit" aria-label="Search artists"><PiMagnifyingGlass /></button>
     </form>
   );
 }

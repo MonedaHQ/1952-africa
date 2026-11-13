@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import styles from './styles/eventslist.module.css';
+import { PiArrowUpRight } from 'react-icons/pi';
 
 function EventsList() {
   const date = getCurrentDateString();
@@ -39,11 +40,10 @@ function EventsList() {
   if (!isRendered || !runningEvents || !upcomingEvents || !allEvents)
     return <Loader />;
 
-  console.log(upcomingEvents);
 
   return (
     <Section>
-      <main className={styles.main}>
+      <div className={styles.main}>
         <Events
           title="Running events"
           eventsdata={runningEvents}
@@ -59,7 +59,7 @@ function EventsList() {
           eventsdata={allEvents}
           couldSponsor={false}
         /> */}
-      </main>
+      </div>
     </Section>
   );
 }
@@ -67,9 +67,7 @@ function EventsList() {
 function Events({ title, eventsdata, couldSponsor }) {
   return (
     <div className={styles.events}>
-      <h3>
-        {title} ({eventsdata.meta.totalItems})
-      </h3>
+      <h2>{title}</h2>
       <div className={styles.eventsContainer}>
         {eventsdata.data.length < 1 ? (
           <NoData />
@@ -87,29 +85,29 @@ function Event({ event, couldSponsor }) {
   const router = useRouter();
 
   return (
-    <div className={styles.event}>
+    <article className={styles.event}>
       <div className={styles.imageContainer}>
         <Image
-          width={200}
-          height={200}
+          width={640}
+          height={480}
+          sizes="(max-width: 700px) 100vw, 320px"
           src={event.image_url}
           alt={event.title}
         />
       </div>
       <div className={styles.details}>
-        <h4>{event.title}</h4>
-        <p dangerouslySetInnerHTML={{ __html: event.description }} />
-        <p>
-          Starting {simplifyDateString(event.start_date)} till{' '}
-          {simplifyDateString(event.end_date)}
-        </p>
+        <span className={styles.eventLabel}>
+          {simplifyDateString(event.start_date)} — {simplifyDateString(event.end_date)}
+        </span>
+        <h3>{event.title}</h3>
+        <div className={styles.description} dangerouslySetInnerHTML={{ __html: event.description }} />
         {event.open_to_sponsorship && couldSponsor && (
-          <Button variant="primary" onClick={() => router.push('/donate')}>
-            Partner
+          <Button variant="secondary" href="/donate">
+            Partner on this event
           </Button>
         )}
       </div>
-    </div>
+    </article>
   );
 }
 

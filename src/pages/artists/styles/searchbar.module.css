@@ -1,22 +1,50 @@
 .form {
   display: flex;
-  justify-content: center;
-  padding: 2rem;
+  align-items: center;
+  gap: 1.2rem;
+  width: min(100% - var(--gutter) * 2, var(--container));
+  margin: 0 auto;
+  padding: 0 0.4rem 0 0;
+  border-bottom: 1px solid var(--color-line-strong);
+  transition: border-color 0.3s var(--ease);
+}
+
+.form:focus-within {
+  border-color: var(--color-ink);
 }
 
 .searchbar {
-  font: inherit;
-  padding: 1rem 2rem;
-  border-radius: 5rem;
-
-  border: 1px solid var(--color-black);
-  outline: 1px solid transparent;
-
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  flex: 1;
+  min-width: 0;
+  padding: 1.6rem 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: var(--fs-lead);
 }
 
-.searchbar:focus {
-  padding: 1rem 2.6rem;
-  border: 1px solid var(--color-green);
-  outline: 1px solid var(--color-green);
+.searchbar::placeholder {
+  color: var(--color-grey);
+}
+
+.form button {
+  display: grid;
+  place-items: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.form button:hover {
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+
+.form svg {
+  width: 2rem;
+  height: 2rem;
 }

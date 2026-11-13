@@ -1,36 +1,136 @@
 .main {
   display: grid;
-  margin-top: 8rem;
-  row-gap: 3rem;
+  gap: 2rem;
+  padding-top: calc(var(--nav-h) + 1.6rem);
 }
 
-.imageContainer {
+.layout {
   display: grid;
-  place-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 42rem);
+  align-items: start;
+  gap: 4rem clamp(3.2rem, 5vw, 6.4rem);
+}
+
+.aside {
+  position: sticky;
+  top: calc(var(--nav-h) + 1.6rem);
+  display: grid;
+  gap: 2.4rem;
 }
 
 .image {
-  width: 60%;
+  width: 100%;
   height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius);
 }
 
-.content {
+.imageContainer figcaption {
+  margin-top: 1rem;
+  color: var(--color-muted);
+  font-size: var(--fs-caption);
+  font-style: italic;
+}
+
+.facts {
   display: grid;
-  row-gap: 2rem;
+  border-top: 1px solid var(--color-line);
 }
 
-.content ul {
-  margin-left: 3rem;
+.facts > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.6rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--color-line);
 }
 
-@media (max-width: 65em) {
-  .image {
-    width: 80%;
+.facts span {
+  color: var(--color-muted);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.facts strong {
+  font-weight: 500;
+  text-align: right;
+}
+
+.aside > a {
+  justify-self: start;
+}
+
+/* long-form article */
+.content {
+  line-height: 1.7;
+}
+
+.content h1 {
+  margin-bottom: 2.4rem;
+  font-size: var(--fs-h1);
+}
+
+.content h2 {
+  margin: 3.6rem 0 1.2rem;
+  padding-top: 2.4rem;
+  border-top: 1px solid var(--color-line);
+  font-size: var(--fs-h3);
+}
+
+.content h3 {
+  margin: 2.4rem 0 1rem;
+  font-size: var(--fs-h4);
+}
+
+.content p,
+.content li {
+  color: var(--color-muted);
+}
+
+.content p + p,
+.content ul + p,
+.content ol + p {
+  margin-top: 1em;
+}
+
+.content h1 + p {
+  color: var(--color-ink);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+}
+
+.content strong {
+  color: var(--color-ink);
+}
+
+.content ul,
+.content ol {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1.2rem 0;
+  padding-left: 2.2rem;
+}
+
+.content li::marker {
+  color: var(--color-green-deep);
+}
+
+.content a {
+  color: var(--color-green-deep);
+  text-underline-offset: 0.25em;
+}
+
+@media only screen and (max-width: 62em) {
+  .layout {
+    grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 40em) {
-  .image {
-    width: 100%;
+  .aside {
+    position: static;
+    grid-row: 1;
+    max-width: 56rem;
   }
 }

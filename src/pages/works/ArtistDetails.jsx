@@ -1,32 +1,31 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { PiArrowUpRight } from 'react-icons/pi';
 
-import styles from './styles/artistDetails.module.css';
-import { useRouter } from 'next/router';
 import Loader from '@/components/Loader';
 
+import styles from './styles/artistDetails.module.css';
+
 function ArtistDetails({ artist }) {
-  const router = useRouter();
   if (!artist) return <Loader />;
   return (
-    <div
-      className={styles.artistDetailBox}
-      onClick={() => router.push(`/artists/${artist.id}`)}
-    >
+    <Link className={styles.artistDetailBox} href={`/artists/${artist.id}`}>
       <div className={styles.imageContainer}>
         <Image
           src={artist.image_url}
-          width={80}
-          height={80}
+          width={112}
+          height={112}
           alt={`A photo of ${artist.first_name}`}
         />
       </div>
       <div className={styles.content}>
-        <h3 className={styles.name}>
+        <span className={styles.label}>Artist</span>
+        <span className={styles.name}>
           {artist.first_name} {artist.last_name}
-        </h3>
-        <p>{artist.medium}</p>
+        </span>
       </div>
-    </div>
+      <PiArrowUpRight aria-hidden="true" />
+    </Link>
   );
 }
 

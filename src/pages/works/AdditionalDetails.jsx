@@ -12,8 +12,8 @@ function AdditionalDetails({ work }) {
 
   return (
     <Section>
-      <main className={styles.main}>
-        <h3 className={styles.heading}>Additional details:</h3>
+      <div className={styles.main}>
+        <h2 className={styles.heading}>More about this work</h2>
         <div className={styles.videoContainer}>
           <iframe
             width="560"
@@ -24,7 +24,7 @@ function AdditionalDetails({ work }) {
             allowFullScreen
           ></iframe>
         </div>
-      </main>
+      </div>
     </Section>
   );
 }

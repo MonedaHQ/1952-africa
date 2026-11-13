@@ -1,35 +1,38 @@
-import Section from '@/components/Section';
-import styles from './styles/exhibitionmain.module.css';
 import Image from 'next/image';
-import { PiCalendarLight } from 'react-icons/pi';
+import Link from 'next/link';
+import { PiArrowLeft } from 'react-icons/pi';
+
 import Loader from '@/components/Loader';
+import Section from '@/components/Section';
+
+import styles from './styles/exhibitionmain.module.css';
 
 function ExhibitionMain({ exhibition }) {
   if (!exhibition) return <Loader />;
   return (
     <Section>
-      <main className={styles.main}>
-        <div className={styles.imageContainer}>
-          <Image
-            width={280}
-            height={280}
-            src={exhibition.image_url}
-            alt={exhibition.title}
-            className={styles.image}
-          />
+      <div className={styles.main}>
+        <Link href="/gallery" className={styles.back}>
+          <PiArrowLeft aria-hidden="true" /> All exhibitions
+        </Link>
+        <div className={styles.header}>
+          <div className={styles.heading}>
+            <span className="eyebrow">Exhibition · {exhibition.year}</span>
+            <h1>{exhibition.title}</h1>
+          </div>
+          <div className={styles.imageContainer}>
+            <Image
+              width={960}
+              height={720}
+              src={exhibition.image_url}
+              alt={exhibition.title}
+              sizes="(max-width: 900px) 100vw, 520px"
+              className={styles.image}
+              priority
+            />
+          </div>
         </div>
-        <ul className={styles.list}>
-          <li className={styles.item}>
-            <span>Exhibition</span>
-          </li>
-          <li className={styles.item}>
-            <h3>{exhibition.title}</h3>
-          </li>
-          <li className={styles.item}>
-            <PiCalendarLight /> <p>{exhibition.year}</p>
-          </li>
-        </ul>
-      </main>
+      </div>
     </Section>
   );
 }

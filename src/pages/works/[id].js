@@ -15,6 +15,9 @@ import { getExhibition } from '@/services/apiGallery';
 import AdditionalDetails from './AdditionalDetails';
 import Bands from '@/components/Bands';
 import Footer from '@/components/Footer';
+import Section from '@/components/Section';
+
+import styles from './styles/workpage.module.css';
 
 function Work() {
   const scrollPosition = useScrollPosition(scrollOffset);
@@ -76,9 +79,19 @@ function Work() {
       />
       <Navigation scrollPosition={scrollPosition} darkHero={false} />
       <BurgerNavigation />
-      <WorkDisplay work={currentWork} />
-      <ArtistDetails artist={currentArtist} />
-      <WorkDetails work={currentWork} exhibition={currentExhibition} />
+      <Section>
+        <main className={styles.layout}>
+          <WorkDisplay work={currentWork} />
+          <div className={styles.aside}>
+            <div className={styles.title}>
+              <span className="eyebrow">Artwork</span>
+              <h1>{currentWork.title}</h1>
+            </div>
+            <ArtistDetails artist={currentArtist} />
+            <WorkDetails work={currentWork} exhibition={currentExhibition} />
+          </div>
+        </main>
+      </Section>
       <AdditionalDetails work={currentWork} />
       <Bands />
       <Footer />

@@ -1,0 +1,330 @@
+.page {
+  overflow: clip;
+  background: var(--color-ivory);
+}
+
+.intro,
+.filmSection,
+.exploreSection,
+.prizeInner,
+.legacySection,
+.supportSection {
+  padding-inline: max(var(--gutter), calc((100% - var(--container)) / 2));
+}
+
+.page h2 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-green-deep);
+}
+
+/* ---------- Who we are ---------- */
+.intro {
+  padding-block: clamp(4rem, 5vw, 6.4rem) clamp(3.2rem, 4vw, 4.8rem);
+}
+
+.introLabel {
+  margin-bottom: 2rem;
+}
+
+.introBody {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: end;
+  gap: 2.4rem clamp(3.2rem, 5vw, 8rem);
+}
+
+.introBody h2 {
+  font-size: var(--fs-h1);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.introCopy {
+  display: grid;
+  justify-items: start;
+  gap: 2.4rem;
+  color: var(--color-muted);
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+}
+
+/* ---------- Film ---------- */
+.filmSection {
+  padding-bottom: clamp(4rem, 5vw, 6.4rem);
+}
+
+.filmFrame {
+  width: 100%;
+}
+
+.filmCaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1.2rem;
+  color: var(--color-muted);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ---------- Explore ---------- */
+.exploreSection {
+  padding-block: clamp(4rem, 5vw, 6.4rem);
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-line);
+}
+
+.sectionHead {
+  display: grid;
+  justify-items: start;
+  gap: 1.6rem;
+  margin-bottom: clamp(2.8rem, 3.5vw, 4rem);
+}
+
+.pathwayGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4rem clamp(1.6rem, 2vw, 2.8rem);
+}
+
+.pathwayCard {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cardImage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-sand);
+  border-radius: var(--radius);
+}
+
+.cardImage img {
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+
+.imageCredit {
+  position: absolute;
+  left: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 1;
+  padding: 0.6rem 1rem;
+  border-radius: 10rem;
+  background: rgba(14, 15, 14, 0.62);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--color-white);
+  font-size: var(--fs-caption);
+  line-height: 1.2;
+}
+
+.pathwayCard:hover .cardImage img {
+  transform: scale(1.05);
+}
+
+.cardBody {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 1.6rem;
+  padding-top: 2rem;
+}
+
+
+.cardBody h3 {
+  font-size: var(--fs-h3);
+}
+
+.cardBody p {
+  margin-top: 0.8rem;
+  color: var(--color-muted);
+  font-size: 1.6rem;
+  line-height: 1.55;
+}
+
+.cardArrow {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 50%;
+  transition: background-color 0.35s var(--ease), color 0.35s var(--ease),
+    border-color 0.35s var(--ease);
+}
+
+.cardArrow svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  transition: transform 0.35s var(--ease);
+}
+
+.pathwayCard:hover .cardArrow {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-white);
+}
+
+.pathwayCard:hover .cardArrow svg {
+  transform: translate(0.15rem, -0.15rem);
+}
+
+/* ---------- Prize ---------- */
+.prizeSection {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.prizeInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 48rem);
+  align-items: center;
+  gap: 4.8rem clamp(4rem, 8vw, 12rem);
+  padding-block: clamp(4rem, 5vw, 6.4rem);
+}
+
+.prizeContent {
+  display: grid;
+  justify-items: start;
+  gap: 2.4rem;
+}
+
+.goldText {
+  color: var(--color-gold);
+}
+
+.prizeContent h2 {
+  font-size: var(--fs-h1);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.prizeContent p {
+  margin-bottom: 0.8rem;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+}
+
+.prizeImage {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.prizeImage img {
+  object-fit: cover;
+}
+
+.prizeFigure figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--fs-caption);
+}
+
+.prizeFigure figcaption a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.prizeFigure figcaption a:hover {
+  color: var(--color-gold);
+}
+
+.prizeFigure figcaption span {
+  font-size: var(--fs-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ---------- Legacy ---------- */
+.legacySection {
+  display: grid;
+  grid-template-columns: minmax(0, 44rem) minmax(0, 1fr);
+  align-items: center;
+  gap: 4rem clamp(4rem, 8vw, 12rem);
+  padding-block: clamp(4rem, 5vw, 6.4rem);
+}
+
+.legacyFigure img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.legacyFigure figcaption {
+  margin-top: 1.2rem;
+  color: var(--color-muted);
+  font-size: var(--fs-caption);
+}
+
+.legacyContent {
+  display: grid;
+  justify-items: start;
+  gap: 2.4rem;
+}
+
+
+
+.legacyContent p {
+  color: var(--color-muted);
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+}
+
+.hashtag {
+  color: var(--color-green-deep);
+  font-size: var(--fs-h4);
+  font-style: italic;
+}
+
+/* ---------- Support ---------- */
+.supportSection {
+  padding-block: clamp(4rem, 5vw, 6.4rem);
+  background: var(--color-gold);
+}
+
+.supportInner {
+  display: grid;
+  justify-items: center;
+  gap: 2.8rem;
+  text-align: center;
+}
+
+.supportInner h2 {
+  font-size: var(--fs-h1);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 56em) {
+  .introBody,
+  .prizeInner,
+  .legacySection {
+    grid-template-columns: 1fr;
+  }
+
+  .pathwayGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardImage {
+    aspect-ratio: 3 / 2;
+  }
+
+  .prizeFigure,
+  .legacyFigure {
+    max-width: 48rem;
+  }
+}

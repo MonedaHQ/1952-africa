@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/router';
+import { PiArrowDown, PiArrowRight } from 'react-icons/pi';
 
-import { headerAnimation } from '@/utils/anim';
-import { slideshowImages } from '@/data/slideshowImages';
+import { useArtworks } from '@/hooks/useArtworks';
 import { useSmoothScroll } from '@/context/SmoothScrollContext';
 
 import BgHero from '@/components/BgHero';
@@ -10,46 +9,85 @@ import Button from '@/components/Button';
 
 import styles from './styles/herosection.module.css';
 
+const ease = [0.2, 0.7, 0.2, 1];
+
+const line = {
+  initial: { y: '110%' },
+  enter: (i) => ({
+    y: 0,
+    transition: { duration: 1, ease, delay: 0.15 + i * 0.12 },
+  }),
+};
+
+const fade = {
+  initial: { opacity: 0, y: 16 },
+  enter: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease, delay: 0.5 + i * 0.12 },
+  }),
+};
+
 function HeroSection() {
-  const router = useRouter();
-
-  return (
-    <BgHero slideShow={slideshowImages}>
-      <>
-        <div className={styles.textContent}>
-          <div className={styles.headingMask}>
-            <motion.h1
-              className={styles.heading}
-              variants={headerAnimation}
-              initial="initial"
-              animate="enter"
-            >
-              Empowering <span>African</span> Creativity
-            </motion.h1>
-          </div>
-          <p>
-            Explore the essence of 1952Africa, our mission, and the incredible
-            artistry we&lsquo;re empowering. Join us on this inspiring journey
-            and discover the positive impact we&lsquo;re making possible.
-          </p>
-        </div>
-        <Buttons />
-      </>
-    </BgHero>
-  );
-}
-
-function Buttons() {
   const { handleScrollTo } = useSmoothScroll();
+  const artworks = useArtworks();
+
   return (
-    <div className={styles.btnContainer}>
-      <Button variant="primary-reverse" onClick={() => router.push('/explore')}>
-        Explore
-      </Button>
-      <Button variant="link-dark" onClick={() => handleScrollTo('main', 180)}>
-        Learn more
-      </Button>
-    </div>
+    <BgHero slideShow={artworks}>
+      <div className={styles.textContent}>
+        <motion.span
+          className={`eyebrow ${styles.eyebrow}`}
+          variants={fade}
+          custom={0}
+          initial="initial"
+          animate="enter"
+        >
+          Art · Culture · History
+        </motion.span>
+
+        <h1 className={styles.heading}>
+          <span className={styles.mask}>
+            <motion.span variants={line} custom={0} initial="initial" animate="enter">
+              Empowering
+            </motion.span>
+          </span>
+          <span className={styles.mask}>
+            <motion.span variants={line} custom={1} initial="initial" animate="enter">
+              <em>African</em> Creativity
+            </motion.span>
+          </span>
+        </h1>
+
+        <div className={styles.lower}>
+          <motion.p variants={fade} custom={1} initial="initial" animate="enter">
+            Supporting the artists, ideas and cultural expressions shaping a
+            more expansive African future.
+          </motion.p>
+
+          <motion.div
+            className={styles.btnContainer}
+            variants={fade}
+            custom={2}
+            initial="initial"
+            animate="enter"
+          >
+            <Button variant="primary-reverse" href="/explore">
+              Explore the foundation <PiArrowRight />
+            </Button>
+            <span className={styles.scrollBtn}>
+              <Button
+                variant="link-dark"
+                onClick={() => handleScrollTo('main', 60)}
+                ariaLabel="Scroll to discover"
+              >
+                <span className={styles.scrollText}>Scroll to discover</span>
+                <PiArrowDown />
+              </Button>
+            </span>
+          </motion.div>
+        </div>
+      </div>
+    </BgHero>
   );
 }
 

@@ -1,41 +1,22 @@
-import Button from '@/components/Button';
+import Link from 'next/link';
+import { PiArrowUpRight } from 'react-icons/pi';
+
 import styles from './styles/dropdown.module.css';
-import { useRouter } from 'next/router';
 
-function DropDown({ dropdownList, setIsHovered, isHovered, motion }) {
-  const router = useRouter();
-  const dropdown = {
-    initial: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { delay: 0.8, duration: 0.2 },
-    },
-  };
-  if (!isHovered) return null;
-
+function DropDown({ dropdownList, isOpen }) {
   return (
-    <motion.div
-      className={styles.dropDown}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      variant={dropdown}
-      initial="initial"
-      animate="visible"
-    >
+    <div className={`${styles.dropDown} ${isOpen ? styles.open : ''}`}>
       <ul className={styles.dropDownList}>
         {dropdownList.map((link) => (
           <li key={link.label}>
-            <Button
-              variant="link-light"
-              action={link.action}
-              onClick={() => (link.path ? router.push(link.path) : '')}
-            >
-              {link.label}
-            </Button>
+            <Link href={link.path} className={styles.item} tabIndex={isOpen ? 0 : -1}>
+              <span>{link.label}</span>
+              <PiArrowUpRight aria-hidden="true" />
+            </Link>
           </li>
         ))}
       </ul>
-    </motion.div>
+    </div>
   );
 }
 

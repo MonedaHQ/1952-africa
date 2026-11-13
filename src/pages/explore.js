@@ -1,20 +1,31 @@
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { PiArrowUpRight } from 'react-icons/pi';
+
 import BgHero from '@/components/BgHero';
 import MetaTags from '@/components/head';
 import BurgerNavigation from '@/components/navcomponents/burgerNav/BurgerNavigation';
 import Navigation from '@/components/navcomponents/mainNav/Navigation';
-import { slideshowImages } from '@/data/slideshowImages';
+import { useArtworks } from '@/hooks/useArtworks';
 import useScrollPosition from '@/hooks/useScrollPosition';
 import { scrollOffset } from '@/utils/config';
 
 import styles from './explore/styles/explore.module.css';
-import Button from '@/components/Button';
 
-import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
-import { slideUp } from '@/utils/anim';
+const explore = [
+  { label: 'Our Programs', path: '/programs' },
+  { label: 'Our Events', path: '/events' },
+  { label: 'Discover our Artists', path: '/artists' },
+  { label: 'Visit our Gallery', path: '/gallery' },
+  { label: 'About us', path: '/about' },
+  { label: 'The 1952 Africa Raffle', path: '/raffle' },
+];
+
+const ease = [0.2, 0.7, 0.2, 1];
 
 function Explore() {
   const scrollPosition = useScrollPosition(scrollOffset);
+  const artworks = useArtworks();
 
   return (
     <>
@@ -22,48 +33,31 @@ function Explore() {
         title="Explore - 1952 Africa"
         description="Empowering African Creativity - Explore the essence of 1952Africa, our mission, and the incredible artistry we're empowering. Join us on this inspiring journey and see the change you're making possible."
       />
-      <Navigation scrollPosition={scrollPosition} darkHero={true} bg={false} />
+      <Navigation scrollPosition={scrollPosition} darkHero={true} />
       <BurgerNavigation />
-      <ExploreContent />
+      <BgHero slideShow={artworks}>
+        <div className={styles.body}>
+          <span className="eyebrow">Art · Culture · History</span>
+          <h1>Explore 1952 Africa</h1>
+          <ul className={styles.linkContainer}>
+            {explore.map((link, index) => (
+              <motion.li
+                key={link.path}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease, delay: 0.2 + index * 0.07 }}
+              >
+                <Link href={link.path}>
+                  <span className={styles.label}>{link.label}</span>
+                  <PiArrowUpRight aria-hidden="true" />
+                </Link>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
+      </BgHero>
     </>
   );
 }
 
-function ExploreContent() {
-  const explore = [
-    { label: 'Explore our Programs', path: '/programs' },
-    { label: 'Our Events', path: '/events' },
-    { label: 'Disover our Artists', path: '/artists' },
-    { label: 'Visit our Gallery', path: '/gallery' },
-    { label: 'Learn more About us', path: '/about' },
-    { label: 'The 1952 Africa Raffle', path: '/raffle' },
-  ];
-
-  const router = useRouter();
-
-  return (
-    <BgHero slideShow={slideshowImages}>
-      <div className={styles.body}>
-        <h2>Explore 1952 Africa</h2>
-        <motion.ul
-          className={styles.linkContainer}
-          variants={slideUp}
-          initial="initial"
-          animate="enter"
-        >
-          {explore.map((link) => (
-            <li key={link.label}>
-              <Button
-                variant="link-light"
-                onClick={() => router.push(link.path)}
-              >
-                {link.label}
-              </Button>
-            </li>
-          ))}
-        </motion.ul>
-      </div>
-    </BgHero>
-  );
-}
 export default Explore;

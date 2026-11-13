@@ -1,0 +1,30 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: start;
+  gap: 4rem clamp(3.2rem, 5vw, 7.2rem);
+  padding-top: calc(var(--nav-h) + 1.6rem);
+}
+
+.aside {
+  display: grid;
+  gap: 2.8rem;
+}
+
+.title {
+  display: grid;
+  justify-items: start;
+  gap: 1.6rem;
+}
+
+.title h1 {
+  font-size: var(--fs-h2);
+  font-style: italic;
+  line-height: 1.1;
+}
+
+@media only screen and (max-width: 56em) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,55 +1,99 @@
 .textContent {
   display: grid;
-  grid-auto-rows: max-content;
-  row-gap: 2.4rem;
+  gap: clamp(1.8rem, 2.2vw, 2.8rem);
 }
 
-.headingMask {
-  overflow: hidden;
+.eyebrow {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .heading {
-  font-weight: 500;
-  font-size: 8.2rem;
-  line-height: 7.8rem;
+  font-size: var(--fs-display);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-wrap: nowrap;
 }
 
-.heading span {
+.heading em {
   font-style: italic;
-  font-weight: 600;
+  font-weight: 400;
+  color: var(--color-gold);
+}
+
+.mask {
+  display: block;
+  overflow: hidden;
+  /* room for descenders + italics inside the reveal mask */
+  padding: 0 0.08em 0.12em 0;
+  margin-bottom: -0.12em;
+}
+
+.mask > span {
+  display: block;
+}
+
+.lower {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3.2rem;
+  flex-wrap: wrap;
+}
+
+.lower p {
+  max-width: 46rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
 }
 
 .btnContainer {
   display: flex;
-  gap: 3rem;
+  align-items: center;
+  gap: 2.8rem;
+  flex-wrap: wrap;
 }
 
-@media only screen and (max-width: 106.4em) {
+@media only screen and (max-width: 37.5em) {
   .heading {
-    font-size: 7rem;
-  }
-}
-
-@media only screen and (max-width: 69.4em) {
-  .heading {
-    font-size: 6.4rem;
-  }
-}
-
-@media only screen and (max-width: 50.65em) {
-  .heading {
-    font-size: 4rem;
-    line-height: 4.6rem;
-  }
-}
-
-@media only screen and (max-width: 24em) {
-  .heading {
-    font-size: 3rem;
-    line-height: 3.6rem;
+    font-size: clamp(3.6rem, 11.2vw, 5.2rem);
   }
 
-  .textContent p {
-    font-size: 1.6rem;
+  .btnContainer {
+    flex-wrap: nowrap;
+    gap: 1.2rem;
+    width: 100%;
+  }
+
+  .btnContainer > a {
+    flex: 1;
+    height: 5.2rem;
+    padding-block: 0;
+  }
+
+  /* the scroll link becomes a round icon button beside the main CTA */
+  .scrollBtn > button {
+    width: 5.2rem;
+    height: 5.2rem;
+    padding: 0;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+    background-image: none;
+  }
+
+  .scrollBtn > button:hover {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+  }
+
+  .scrollText {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 }

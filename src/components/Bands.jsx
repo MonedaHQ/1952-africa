@@ -1,45 +1,24 @@
-import Image from 'next/image';
 import styles from './styles/bands.module.css';
 
-function Bands({ double = false }) {
+/**
+ * The 1952 "52" band — a brand signature.
+ * Drawn as a CSS mask so it can take any colour and stay crisp at any size.
+ *
+ * tone: 'ink' (default, on ivory) | 'gold' (on black) | 'light' (on black) | 'green'
+ * size: 'sm' | 'md' (default) | 'lg'
+ */
+function Bands({ double = false, tone = 'ink', size = 'md', bare = false }) {
   return (
-    <div className={styles.marquee}>
-      <Band direction="left" />
-      {double && <Band direction="right" />}
+    <div
+      className={`${styles.band} ${styles[tone] || ''} ${styles[size] || ''} ${
+        bare ? styles.bare : ''
+      }`}
+      aria-hidden="true"
+    >
+      <div className={styles.track} />
+      {double && <div className={`${styles.track} ${styles.reverse}`} />}
     </div>
   );
 }
 
-function Band({ direction }) {
-  const bands = Array.from({ length: 20 }, () => `/assets/band.png`);
-  const allBands = [...bands, ...bands];
-  return (
-    <div className={styles.bandsContainer}>
-      <div className={`${styles.scrollContainer} ${styles[direction]}`}>
-        {allBands.map((band, index) => (
-          <Image
-            key={index}
-            src={band}
-            alt="1952 Africa code"
-            width={300}
-            height={137}
-            className={styles.bands}
-            draggable={false}
-          />
-        ))}
-        {bands.map((band, index) => (
-          <Image
-            key={index}
-            src={band}
-            alt="1952 Africa code"
-            width={300}
-            height={137}
-            className={styles.bands}
-            draggable={false}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
 export default Bands;

@@ -1,33 +1,60 @@
 .dropDown {
   position: absolute;
-  top: 4rem;
-  left: -1rem;
-  background-color: var(--color-white);
-  width: 25rem;
-  padding: 2rem 2rem;
-  border-radius: 0.8rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-  animation: fadeIn 0.4s;
+  top: 100%;
+  left: 50%;
+  width: 27rem;
+  padding-top: 1.2rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 0.8rem);
+  transition: opacity 0.25s var(--ease), transform 0.35s var(--ease),
+    visibility 0.25s;
   z-index: 1500;
 }
 
-@keyframes fadeIn {
-  0% {
-    transform: translateY(14px);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(0);
-  }
+.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
 }
 
 .dropDownList {
   list-style: none;
-  color: var(--color-black);
-  display: grid;
-  justify-items: start;
+  padding: 0.8rem;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2.4rem 6rem -1.2rem rgba(14, 15, 14, 0.22);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  padding: 1.1rem 1.4rem;
+  border-radius: 0.8rem;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: background-color 0.25s var(--ease);
+}
+
+.item svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 0;
+  transform: translate(-0.4rem, 0.4rem);
+  transition: opacity 0.25s var(--ease), transform 0.35s var(--ease);
+}
+
+.item:hover,
+.item:focus-visible {
+  background-color: var(--color-ivory);
+}
+
+.item:hover svg,
+.item:focus-visible svg {
+  opacity: 1;
+  transform: none;
 }

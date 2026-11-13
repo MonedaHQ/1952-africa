@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { PiCaretCircleLeftFill, PiCaretCircleRightFill } from 'react-icons/pi';
+import { PiArrowLeft, PiArrowRight } from 'react-icons/pi';
 import styles from './styles/pagination.module.css';
 import { PAGE_SIZE } from '@/utils/config';
 
@@ -38,17 +38,19 @@ function Pagination({ count }) {
       <div className={styles.buttons}>
         <button
           className={styles.btn}
+          aria-label="Previous page"
           onClick={previousPage}
           disabled={currentPage === 1}
         >
-          <PiCaretCircleLeftFill />
+          <PiArrowLeft />
         </button>
         <button
           disabled={currentPage === pageCount}
           className={styles.btn}
+          aria-label="Next page"
           onClick={nextPage}
         >
-          <PiCaretCircleRightFill />
+          <PiArrowRight />
         </button>
       </div>
     </div>

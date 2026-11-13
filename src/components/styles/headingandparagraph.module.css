@@ -1,34 +1,66 @@
+.stack {
+  display: grid;
+  gap: var(--divider-y);
+}
+
 .contentContainer {
   display: grid;
-  row-gap: 1.4rem;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 1.6rem clamp(2.4rem, 4vw, 6.4rem);
+  align-items: start;
+  padding-top: var(--divider-y);
+  border-top: 1px solid var(--color-line);
+}
+
+.stack > .contentContainer:first-child {
+  padding-top: 0;
+  border-top: 0;
 }
 
 .heading {
-  font-size: 3.8rem;
+  font-size: var(--fs-h3);
+  line-height: 1.2;
 }
 
 .paragraph {
-  font-size: 2.2rem;
-  max-width: 96%;
-  margin: auto;
+  color: var(--color-muted);
+  font-size: var(--fs-body);
+  line-height: 1.7;
 }
 
-@media only screen and (max-width: 62em) {
-  .paragraph {
-    max-width: 90%;
-  }
-
-  .heading {
-    font-size: 2.8rem;
-  }
+.paragraph > * + * {
+  margin-top: 1em;
 }
 
-@media only screen and (max-width: 24em) {
-  .paragraph {
-    font-size: 1.8rem;
-  }
+/* rich text from the CMS often carries empty spacer paragraphs */
+.paragraph p:empty,
+.paragraph p:has(> br:only-child) {
+  display: none;
+}
 
-  .heading {
-    font-size: 2.2rem;
+.paragraph a {
+  color: var(--color-green-deep);
+}
+
+.paragraph ul,
+.paragraph ol {
+  padding-left: 2rem;
+}
+
+/* An un-headed block is the page's opening statement: full width. */
+.withoutHeading {
+  display: block;
+}
+
+.withoutHeading .paragraph {
+  color: var(--color-ink);
+  font-size: clamp(1.8rem, 1.5vw, 2.2rem);
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+@media only screen and (max-width: 50em) {
+  .contentContainer {
+    grid-template-columns: 1fr;
   }
 }

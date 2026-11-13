@@ -1,38 +1,17 @@
+/* Every content section shares one gutter, one max-width and one rhythm. */
 .section {
-  padding: 4rem 16rem;
+  padding-block: var(--section-y);
+  padding-inline: max(
+    var(--gutter),
+    calc((100% - var(--container)) / 2)
+  );
+}
+
+.hero {
+  padding: 0;
 }
 
 .dark {
   background-color: var(--color-black);
   color: var(--color-white);
-}
-
-@media only screen and (max-width: 94em) {
-  .section {
-    padding: 4rem 10rem;
-  }
-}
-
-@media only screen and (max-width: 71.875em) {
-  .section {
-    padding: 4rem 8rem;
-  }
-}
-
-@media only screen and (max-width: 53.125em) {
-  .section {
-    padding: 4rem 6rem;
-  }
-}
-
-@media only screen and (max-width: 40.625em) {
-  .section {
-    padding: 4rem 4rem;
-  }
-}
-
-@media only screen and (max-width: 32.5em) {
-  .section {
-    padding: 4rem 2rem;
-  }
 }

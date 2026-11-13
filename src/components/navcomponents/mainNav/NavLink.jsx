@@ -1,40 +1,55 @@
 import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { PiCaretDown } from 'react-icons/pi';
 
-import Button from '@/components/Button';
 import DropDown from './DropDown';
 
 import styles from './styles/navlink.module.css';
-import { useRouter } from 'next/router';
 
-function NavLink({ link, motion }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const router = useRouter();
+function NavLink({ link }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const { pathname } = useRouter();
 
-  let icon = null;
-  if (link.icon) {
-    icon = isHovered ? link.icon2 : link.icon;
+  const isActive = link.path
+    ? pathname === link.path
+    : link.dropdown?.some((item) => pathname.startsWith(item.path));
+
+  if (!link.dropdown) {
+    return (
+      <li>
+        <Link
+          href={link.path}
+          className={`${styles.trigger} ${isActive ? styles.active : ''}`}
+        >
+          {link.label}
+        </Link>
+      </li>
+    );
   }
 
   return (
-    <li key={link.label}>
-      <div className={styles.navLink}>
-        <Button
-          variant="link-light"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onClick={() => (link.path ? router.push(link.path) : '')}
-        >
-          {link.label} {icon}
-        </Button>
-        {link.dropdown && (
-          <DropDown
-            dropdownList={link.dropdown}
-            setIsHovered={setIsHovered}
-            isHovered={isHovered}
-            motion={motion}
-          />
-        )}
-      </div>
+    <li
+      className={styles.navLink}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+      onFocus={() => setIsOpen(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setIsOpen(false);
+      }}
+      onKeyDown={(event) => event.key === 'Escape' && setIsOpen(false)}
+    >
+      <button
+        type="button"
+        className={`${styles.trigger} ${isActive ? styles.active : ''}`}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        onClick={() => setIsOpen((open) => !open)}
+      >
+        {link.label}
+        <PiCaretDown className={`${styles.caret} ${isOpen ? styles.caretOpen : ''}`} />
+      </button>
+      <DropDown dropdownList={link.dropdown} isOpen={isOpen} />
     </li>
   );
 }
